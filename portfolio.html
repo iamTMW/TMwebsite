@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#141210">
+  <meta name="author" content="Taha Mohyuddin">
+  <link rel="icon" href="images/background2.jpg" type="image/jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Work — Taha Mohyuddin</title>
+  <meta name="description" content="Projects by Taha Mohyuddin: an AI tutoring platform, a hotel chatbot, a grade management system, an investment portfolio manager and a cross-language vCard manager.">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="mark" href="index.html">
+    <span class="mark-i">TM</span>
+    <span class="mark-name">Taha Mohyuddin</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html" data-nav="index.html ">Home</a>
+    <a href="portfolio.html" data-nav="portfolio.html chatbot.html grademan.html">Work</a>
+    <a href="about.html" data-nav="about.html">About</a>
+    <a href="services.html" data-nav="services.html">Experience</a>
+    <a href="blog.html" data-nav="blog.html">Notes</a>
+    <!-- <a href="test.html" data-nav="test.html">Words</a> -->
+    <a href="contact.html" data-nav="contact.html">Contact</a>
+  </nav>
+  <a class="btn btn-ghost topcta" href="images/TMW.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a>
+</header>
+
+<nav class="tabbar" aria-label="Sections">
+  <a href="index.html" data-nav="index.html "><span class="pip"></span>Home</a>
+  <a href="portfolio.html" data-nav="portfolio.html chatbot.html grademan.html"><span class="pip"></span>Work</a>
+  <a href="about.html" data-nav="about.html"><span class="pip"></span>About</a>
+  <a href="contact.html" data-nav="contact.html"><span class="pip"></span>Contact</a>
+  <button type="button" data-sheet-open aria-haspopup="dialog"><span class="pip"></span>More</button>
+</nav>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="All pages">
+  <div class="sheet-panel">
+    <div class="sheet-grab"></div>
+    <a href="index.html">Home <small>Start here</small></a>
+    <a href="portfolio.html">Work <small>Projects and code</small></a>
+    <a href="about.html">About <small>Background, studies, cricket</small></a>
+    <a href="services.html">Experience <small>Where I&rsquo;ve worked</small></a>
+    <a href="blog.html">Notes <small>Moments and milestones</small></a>
+    <a href="test.html">Words <small>What others say</small></a>
+    <a href="contact.html">Contact <small>Get in touch</small></a>
+    <a href="images/TMW.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute; <small>PDF</small></a>
+    <div class="btn-row" style="margin-top:18px">
+      <button class="btn btn-ghost" type="button" data-sheet-close style="flex:1;justify-content:center">Close</button>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <h1 class="seq seq-1">Work</h1>
+      <p class="lede seq seq-2">
+        Six projects, in the order I&rsquo;d show them to someone deciding whether to hire me.
+        Code is on GitHub where it isn&rsquo;t coursework I&rsquo;m not allowed to publish.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="work-list">
+
+        <article class="work-row rv" id="edupro">
+          <div>
+            <h3>EduPro &mdash; AI-powered intelligent tutoring system</h3>
+            <p>A tutoring platform for grade 2 math that adapts to each student&rsquo;s skill level.
+               It generates personalised questions, gives step-by-step hints rather than answers,
+               and tracks progress for students, teachers and parents in one place.</p>
+            <div class="work-meta">
+              <span class="tag tag-live">Live</span>
+              <span class="tag">Next.js</span><span class="tag">JavaScript</span>
+              <span class="tag">Tailwind CSS</span><span class="tag">Python</span>
+              <span class="tag">Flask</span><span class="tag">scikit-learn</span>
+              <span class="tag">Google Gemini API</span>
+            </div>
+            <div class="btn-row" style="margin-top:20px">
+              <a class="btn btn-solid" href="https://edu-pro-ai-tutoring-system-10inezp13-tahas-projects-060a0e65.vercel.app" target="_blank" rel="noopener">Open the demo</a>
+              <a class="btn btn-ghost" href="https://github.com/iamTMW/edu-pro-ai-tutoring-system" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/tutorpic.jpg" alt="EduPro tutoring interface" data-ph="EduPro" loading="lazy"></figure>
+        </article>
+
+        <article class="work-row rv" id="chatbot">
+          <div>
+            <h3>Hotel concierge chatbot</h3>
+            <p>An assistant for hotel front desks. It reads a guest&rsquo;s question in plain language,
+               answers the routine ones instantly, and hands anything unusual to a human with the
+               context already gathered.</p>
+            <div class="work-meta">
+              <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span>
+            </div>
+            <div class="btn-row" style="margin-top:20px">
+              <a class="btn btn-solid" href="chatbot.html">Read the case study</a>
+              <a class="btn btn-ghost" href="https://github.com/iamTMW" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/chatlatoic.jpeg" alt="Chatbot conversation" data-ph="Chatbot" loading="lazy"></figure>
+        </article>
+
+        <article class="work-row rv" id="vcard">
+          <div>
+            <h3>vCard Manager</h3>
+            <p>A contact system split across three languages: a C backend that parses and validates
+               vCard 4.0 files, a Python terminal interface, and MySQL for persistence. Contacts stay
+               in sync between file and database in both directions.</p>
+            <div class="work-meta">
+              <span class="tag">C</span><span class="tag">Python</span><span class="tag">MySQL</span>
+              <span class="tag">Data structures</span><span class="tag">File I/O</span>
+            </div>
+            <div class="btn-row" style="margin-top:20px">
+              <a class="btn btn-ghost" href="https://github.com/iamTMW/vCard-Manager" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/vcardpic.png" alt="vCard manager terminal" data-ph="vCard Manager" loading="lazy"></figure>
+        </article>
+
+        <article class="work-row rv" id="grades">
+          <div>
+            <h3>Grade Manager Plus</h3>
+            <p>Students sign in to see their own marks and nobody else&rsquo;s. Teachers get charts that
+               surface a struggling student while there&rsquo;s still term left to do something about it.</p>
+            <div class="work-meta">
+              <span class="tag">C#</span><span class="tag">Windows</span><span class="tag">Databases</span>
+            </div>
+            <div class="btn-row" style="margin-top:20px">
+              <a class="btn btn-solid" href="grademan.html">Read the case study</a>
+              <a class="btn btn-ghost" href="https://github.com/iamTMW/GradeManagerPlus" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/grademanger3.avif" alt="Grade dashboard" data-ph="Grade Manager" loading="lazy"></figure>
+        </article>
+
+        <article class="work-row rv" id="investing">
+          <div>
+            <h3>Investment portfolio manager</h3>
+            <p>A desktop application for tracking stocks and mutual funds: buying, selling,
+               gain calculations and file persistence, written to hold up when the data gets messy.</p>
+            <div class="work-meta">
+              <span class="tag">Java</span><span class="tag">GUI</span><span class="tag">OOP</span>
+            </div>
+            <div class="btn-row" style="margin-top:20px">
+              <a class="btn btn-ghost" href="https://github.com/iamTMW/ePortfolio" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/stock.png" alt="Portfolio manager screen" data-ph="Portfolio Manager" loading="lazy"></figure>
+        </article>
+
+        <article class="work-row rv" id="app">
+          <div>
+            <h3>A mobile app, still in the workshop</h3>
+            <p>A platform that puts visual creativity and social interaction in the same place.
+               I&rsquo;m building it end to end &mdash; design, stack, and how it eventually pays for itself.
+               More when there&rsquo;s something worth showing.</p>
+            <div class="work-meta">
+              <span class="tag">In progress</span>
+              <span class="tag">Full-stack</span><span class="tag">UI/UX</span><span class="tag">Product strategy</span>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/comings.jpeg" alt="Placeholder artwork" data-ph="Coming soon" loading="lazy"></figure>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Résumé, as a message thread ===== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="thread rv">
+        <div class="thread-head">
+          <span class="thread-dot"></span> Taha
+        </div>
+        <div class="thread-body">
+          <p class="bubble them">Want my r&eacute;sum&eacute;?</p>
+          <p class="bubble them">One page, everything on this site in short form.</p>
+          <a class="bubble file" href="images/TMW.pdf" target="_blank" rel="noopener">
+            <span>Taha-Mohyuddin-Resume.pdf</span>
+            <small>Open PDF</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="rv">Want one of these built for you?</h2>
+      <p class="lede rv" style="margin-top:18px">Tell me the problem, not the tech stack. I&rsquo;ll come back with what I&rsquo;d build and how long it takes.</p>
+      <div class="btn-row rv" style="margin-top:30px">
+        <a class="btn btn-solid" href="contact.html">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div style="max-width:32ch">
+        <h3 style="font-size:1.3rem;margin-bottom:10px">Taha Mohyuddin</h3>
+        <p class="small" style="color:var(--mute);margin:0">Computer science student in Ontario, building software with AI at the centre of it. Open to summer 2027 internships.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Experience</a>
+        <a href="blog.html">Notes</a>
+        <a href="test.html">Words</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="foot-nav">
+        <a href="https://github.com/iamTMW" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/taha-mohyuddin-1795a522a" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:tahamohyuddin30@gmail.com">Email</a>
+        <a href="images/TMW.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span data-year>2026</span> Taha Mohyuddin</span>
+      <span>Designed and built by hand, in Milton, Ontario.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

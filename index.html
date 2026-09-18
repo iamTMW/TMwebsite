@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#141210">
+  <meta name="author" content="Taha Mohyuddin">
+  <link rel="icon" href="images/background2.jpg" type="image/jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Taha Mohyuddin — Software &amp; AI Developer</title>
+  <meta name="description" content="Third-year computer science student at the University of Guelph. AI tutoring platforms, machine learning tooling, and a 20-person team at Loblaws. Open to summer 2026 internships.">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="mark" href="index.html">
+    <span class="mark-i">TM</span>
+    <span class="mark-name">Taha Mohyuddin</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="index.html" data-nav="index.html ">Home</a>
+    <a href="portfolio.html" data-nav="portfolio.html chatbot.html grademan.html">Work</a>
+    <a href="about.html" data-nav="about.html">About</a>
+    <a href="services.html" data-nav="services.html">Experience</a>
+    <a href="blog.html" data-nav="blog.html">Notes</a>
+    <!-- <a href="test.html" data-nav="test.html">Words</a> -->
+    <a href="contact.html" data-nav="contact.html">Contact</a>
+  </nav>
+  <a class="btn btn-ghost topcta" href="images/TMW.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a>
+</header>
+
+<nav class="tabbar" aria-label="Sections">
+  <a href="index.html" data-nav="index.html "><span class="pip"></span>Home</a>
+  <a href="portfolio.html" data-nav="portfolio.html chatbot.html grademan.html"><span class="pip"></span>Work</a>
+  <a href="about.html" data-nav="about.html"><span class="pip"></span>About</a>
+  <a href="contact.html" data-nav="contact.html"><span class="pip"></span>Contact</a>
+  <button type="button" data-sheet-open aria-haspopup="dialog"><span class="pip"></span>More</button>
+</nav>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="All pages">
+  <div class="sheet-panel">
+    <div class="sheet-grab"></div>
+    <a href="index.html">Home <small>Start here</small></a>
+    <a href="portfolio.html">Work <small>Projects and code</small></a>
+    <a href="about.html">About <small>Background, studies, cricket</small></a>
+    <a href="services.html">Experience <small>Where I&rsquo;ve worked</small></a>
+    <a href="blog.html">Notes <small>Moments and milestones</small></a>
+    <a href="test.html">Words <small>What others say</small></a>
+    <a href="contact.html">Contact <small>Get in touch</small></a>
+    <a href="images/TMW.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute; <small>PDF</small></a>
+    <div class="btn-row" style="margin-top:18px">
+      <button class="btn btn-ghost" type="button" data-sheet-close style="flex:1;justify-content:center">Close</button>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+    <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+
+      <!-- Left: hero copy -->
+      <div class="hero-copy">
+        <p class="hero-status seq seq-1">
+          <span class="dot"></span> Open to summer 2027 internships
+        </p>
+
+        <h1>
+          <span class="given seq seq-2">Taha</span>
+          <span class="family seq seq-3">Mohyuddin</span>
+        </h1>
+
+        <p class="hero-role seq seq-4"
+           data-roles='["Software developer","AI engineer","Research assistant","Cricketer"]'>
+          <span class="role-text"></span><span class="caret" aria-hidden="true"></span>
+        </p>
+
+        <p class="lede hero-lede seq seq-4">
+          Third year computer science at the University of Guelph. I&rsquo;ve shipped an AI tutoring
+          platform, built machine-learning tooling for a network engineering firm, and I lead a
+          20-person team at Loblaws. Most terms, all three at once.
+        </p>
+
+        <div class="btn-row hero-cta seq seq-5">
+          <a class="btn btn-solid" href="portfolio.html">See the work</a>
+          <a class="btn btn-ghost" href="images/TMW.pdf" target="_blank" rel="noopener">
+            R&eacute;sum&eacute; (PDF)
+          </a>
+          <a class="btn btn-ghost" href="contact.html">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- Right: portrait -->
+      <figure class="hero-photo seq seq-3">
+        <img
+          src="images/Taha.PNG"
+          alt="Portrait of Taha Mohyuddin"
+          loading="eager"
+          fetchpriority="high"
+        >
+      </figure>
+
+    </div>
+    </section>
+
+  <!-- ===== Institutions ===== -->
+  <section class="section" style="padding-block:clamp(28px,4vw,48px)">
+    <div class="wrap">
+      <div class="logos rv" aria-label="Places I have worked and studied">
+        <img src="images/loblaw3.png" alt="Loblaw Companies" data-ph="Loblaw">
+        <img src="images/ies.jpeg" alt="Innovative Engineering Services" data-ph="IES">
+        <img src="images/medheavelogo.jpeg" alt="Medheave" data-ph="Medheave">
+        <img src="images/codeninja2.jpeg" alt="Code Ninjas" data-ph="Code Ninjas">
+        <img src="images/guelph.png" alt="University of Guelph" data-ph="U of Guelph">
+        <img src="images/cabrig.jpeg" alt="Cambridge International" data-ph="Cambridge">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Currently ===== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head rv">
+        <h2>Where things stand</h2>
+        <p>Four things run in parallel right now. This is the honest version of the calendar.</p>
+      </div>
+
+      <div class="ledger rv">
+        <div class="ledger-row">
+          <div class="ledger-key">Leading</div>
+          <div class="ledger-val">Assistant department manager, Loblaws
+            <span>A 20+ person team, scheduling, training, shrink and inventory flow through SAP and BOSS.</span>
+          </div>
+          <div class="ledger-when">Apr 2025 &rarr;</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">Researching</div>
+          <div class="ledger-val">Research assistant, University of Guelph
+            <span>Genome-wide association studies in PLINK and TASSEL, hunting SNP&ndash;trait associations.</span>
+          </div>
+          <div class="ledger-when">Apr 2025 &rarr;</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">Studying</div>
+          <div class="ledger-val">BSc Computer Science, University of Guelph
+            <span>Third year. Data structures, systems, and anything with a model attached to it.</span>
+          </div>
+          <div class="ledger-when">2023 &rarr;</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">Looking for</div>
+          <div class="ledger-val">A summer 2026 software or AI internship
+            <span>Canada or remote. Happy to talk about anything that ships to real users.</span>
+          </div>
+          <div class="ledger-when">Open</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Selected work ===== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head rv">
+        <h2>Selected work</h2>
+        <p><a class="link-u" href="portfolio.html">All six projects</a></p>
+      </div>
+
+      <div class="work-list">
+        <a class="work-row rv" href="https://edu-pro-ai-tutoring-system-10inezp13-tahas-projects-060a0e65.vercel.app" target="_blank" rel="noopener">
+          <div>
+            <h3>EduPro &mdash; AI tutoring for grade 2 math</h3>
+            <p>Adapts to each student&rsquo;s level, generates its own questions, walks them through hints
+               step by step, and gives teachers and parents a read on progress.</p>
+            <div class="work-meta">
+              <span class="tag tag-live">Live</span>
+              <span class="tag">Next.js</span><span class="tag">Flask</span>
+              <span class="tag">scikit-learn</span><span class="tag">Gemini API</span>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/tutorpic.jpg" alt="EduPro tutoring interface" data-ph="EduPro" loading="lazy"></figure>
+        </a>
+
+        <a class="work-row rv" href="chatbot.html">
+          <div>
+            <h3>Hotel concierge chatbot</h3>
+            <p>Answers guest questions in plain language and handles the repetitive front-desk
+               traffic, so staff spend their time on the guests actually standing in front of them.</p>
+            <div class="work-meta">
+              <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/chatlatoic.jpeg" alt="Chatbot conversation" data-ph="Chatbot" loading="lazy"></figure>
+        </a>
+
+        <a class="work-row rv" href="grademan.html">
+          <div>
+            <h3>Grade Manager Plus</h3>
+            <p>Students check their marks behind a real login; teachers get the charts that show
+               who is drifting before the term ends.</p>
+            <div class="work-meta">
+              <span class="tag">C#</span><span class="tag">Windows</span><span class="tag">Databases</span>
+            </div>
+          </div>
+          <figure class="shot" style="margin:0"><img src="images/grademanger3.avif" alt="Grade dashboard" data-ph="Grade Manager" loading="lazy"></figure>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Capabilities ===== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head rv">
+        <h2>What I work with</h2>
+        <p>Grouped by what I actually reach for, not by what looks long on a list.</p>
+      </div>
+
+      <div class="grid g-2 rv">
+        <div class="card cap">
+          <h3>Languages</h3>
+          <ul>
+            <li>Python</li><li>JavaScript</li><li>Java</li><li>C</li><li>C#</li>
+            <li>SQL</li><li>HTML</li><li>CSS</li>
+          </ul>
+        </div>
+        <div class="card cap">
+          <h3>AI and data</h3>
+          <ul>
+            <li>OpenAI API</li><li>Google Gemini API</li><li>scikit-learn</li>
+            <li>TensorFlow</li><li>pandas</li><li>PLINK</li><li>TASSEL</li>
+          </ul>
+        </div>
+        <div class="card cap">
+          <h3>Web and product</h3>
+          <ul>
+            <li>React</li><li>Next.js</li><li>Node.js</li><li>Flask</li>
+            <li>Tailwind CSS</li><li>WordPress</li><li>Vercel</li><li>SEO</li>
+          </ul>
+        </div>
+        <div class="card cap">
+          <h3>Systems and operations</h3>
+          <ul>
+            <li>MySQL</li><li>MongoDB</li><li>Git &amp; GitHub</li>
+            <li>SAP</li><li>BOSS</li><li>Unity</li><li>Roblox Studio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Quote ===== -->
+  <section class="section">
+    <div class="wrap">
+      <blockquote class="quote rv">
+        <p>Taha&rsquo;s problem-solving mindset and commitment to quality made him a go-to team member.
+           He consistently delivered under pressure.</p>
+        <footer>Stacey Pinson, store manager at Loblaws &middot; <a class="link-u" href="test.html">more of these</a></footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="band">
+    <div class="wrap">
+      <h2 class="rv">Hiring for summer 2027?</h2>
+      <p class="lede rv" style="margin-top:18px">
+        I&rsquo;m looking for a team where I can ship something real between May and August.
+        Send me the role and I&rsquo;ll tell you honestly whether I&rsquo;m the right fit.
+      </p>
+      <div class="btn-row rv" style="margin-top:30px">
+        <a class="btn btn-solid" href="contact.html">Start a conversation</a>
+        <a class="btn btn-ghost" href="mailto:tahamohyuddin30@gmail.com">tahamohyuddin30@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div style="max-width:32ch">
+        <h3 style="font-size:1.3rem;margin-bottom:10px">Taha Mohyuddin</h3>
+        <p class="small" style="color:var(--mute);margin:0">Computer science student in Ontario, building software with AI at the centre of it. Open to summer 2026 internships.</p>
+      </div>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Experience</a>
+        <a href="blog.html">Notes</a>
+        <a href="test.html">Words</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="foot-nav">
+        <a href="https://github.com/iamTMW" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/taha-mohyuddin-1795a522a" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:tahamohyuddin30@gmail.com">Email</a>
+        <a href="images/TMW.pdf" target="_blank" rel="noopener">R&eacute;sum&eacute;</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span data-year>2026</span> Taha Mohyuddin</span>
+      <span>Designed and built by hand, in Milton, Ontario.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
