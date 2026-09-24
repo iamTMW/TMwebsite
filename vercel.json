@@ -3,15 +3,15 @@
     "rewrites": [
       {
         "source": "/work",
-        "destination": "/portfolio.html"
+        "destination": "/portfolio"
       },
       {
         "source": "/experience",
-        "destination": "/services.html"
+        "destination": "/services"
       },
       {
         "source": "/notes",
-        "destination": "/blog.html"
+        "destination": "/blog"
       }
     ]
   }
