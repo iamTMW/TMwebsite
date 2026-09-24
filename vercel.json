@@ -1,0 +1,17 @@
+{
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "/work",
+        "destination": "/portfolio.html"
+      },
+      {
+        "source": "/experience",
+        "destination": "/services.html"
+      },
+      {
+        "source": "/notes",
+        "destination": "/blog.html"
+      }
+    ]
+  }
