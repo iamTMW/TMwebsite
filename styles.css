@@ -467,7 +467,10 @@
   .co-back .co-eyebrow{ color:var(--signal); font-size:.82rem; margin-bottom:2px; }
   .co-back p{ color:var(--bone-dim); font-size:.96rem; line-height:1.55; }
   
-  /* ---------- notes / blog ---------- */
+  /* ---------- notes / blog ---------- */ 
+  .promotion-photo {
+    object-position: center 20%;
+  }
   .note{ display:flex; flex-direction:column; overflow:hidden; padding:0; }
   .note .shot{ border:0; border-radius:0; aspect-ratio:16/10; }
   .note-body{ padding:22px; }
