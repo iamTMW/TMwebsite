@@ -8,6 +8,18 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // Vercel serves clean URLs such as /work and /about.
+  // Map those paths to the filenames used in data-nav attributes.
+  var pageAliases = {
+    'work': 'portfolio.html',
+    'about': 'about.html',
+    'experience': 'services.html',
+    'contact': 'contact.html',
+    'notes': 'blog.html',
+    'portfolio': 'portfolio.html',
+    'index': 'index.html'
+  };
+  if (pageAliases[page]) page = pageAliases[page];
 
   /* ---- mark the current page in both navs ---- */
   document.querySelectorAll('[data-nav]').forEach(function (a) {
