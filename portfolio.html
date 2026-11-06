@@ -2,243 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#141210">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9fc">
+  <meta name="description" content="Full-stack analytics, tutoring software, desktop applications, and systems projects by Taha Mohyuddin.">
   <meta name="author" content="Taha Mohyuddin">
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <title>Work — Taha Mohyuddin</title>
-  <meta name="description" content="Projects by Taha Mohyuddin: an AI tutoring platform, a hotel chatbot, a grade management system, an investment portfolio manager and a cross-language vCard manager.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Selected Work | Taha Mohyuddin">
+  <meta property="og:description" content="Full-stack analytics, tutoring software, desktop applications, and systems projects by Taha Mohyuddin.">
+  <link rel="icon" href="images/TMfavicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="studio.css">
+  <title>Selected Work | Taha Mohyuddin</title>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="topbar">
-  <a class="mark" href="/">
-    <span class="mark-i">TM</span>
-    <span class="mark-name">Taha Mohyuddin</span>
-  </a>
-  <nav class="topnav" aria-label="Primary">
-    <a href="/" data-nav="index.html ">Home</a>
-    <a href="/work" data-nav="portfolio.html chatbot.html grademan.html">Work</a>
-    <a href="/about" data-nav="about.html">About</a>
-    <a href="/experience" data-nav="services.html">Experience</a>
-    <a href="/notes" data-nav="blog.html">Notes</a>
-    <!-- <a href="test.html" data-nav="test.html">Words</a> -->
-    <a href="/contact" data-nav="contact.html">Contact</a>
-  </nav>
-  <a class="btn btn-ghost topcta" href="images/TMW.pdf" target="_blank" rel="noopener">Resume</a>
-</header>
-
-<nav class="tabbar" aria-label="Sections">
-  <a href="/" data-nav="index.html "><span class="pip"></span>Home</a>
-  <a href="/work" data-nav="portfolio.html chatbot.html grademan.html"><span class="pip"></span>Work</a>
-  <a href="/about" data-nav="about.html"><span class="pip"></span>About</a>
-  <a href="/contact" data-nav="contact.html"><span class="pip"></span>Contact</a>
-  <button type="button" data-sheet-open aria-haspopup="dialog"><span class="pip"></span>More</button>
-</nav>
-
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="All pages">
-  <div class="sheet-panel">
-    <div class="sheet-grab"></div>
-    <a href="/">Home <small>Start here</small></a>
-    <a href="/work">Work <small>Projects and code</small></a>
-    <a href="/about">About <small>Background, studies, cricket</small></a>
-    <a href="/experience">Experience <small>Where I&rsquo;ve worked</small></a>
-    <a href="/notes">Notes <small>Moments and milestones</small></a>
-   <!--  <a href="test.html">Words <small>What others say</small></a> -->
-    <a href="/contact">Contact <small>Get in touch</small></a>
-    <a href="images/TMW.pdf" target="_blank" rel="noopener">Resume; <small>PDF</small></a>
-    <div class="btn-row" style="margin-top:18px">
-      <button class="btn btn-ghost" type="button" data-sheet-close style="flex:1;justify-content:center">Close</button>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="index.html" aria-label="Taha Mohyuddin, homepage"><span class="brand-mark">TM</span><span>Taha Mohyuddin</span></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html" >Home</a>
+      <a href="portfolio.html" aria-current="page">Work</a>
+      <a href="about.html" >About</a>
+      <a href="contact.html" >Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-outline" href="https://github.com/iamTMW" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a class="btn btn-primary" href="contact.html">Let's connect ↗</a>
+      <details class="mobile-nav"><summary aria-label="Open navigation">Menu</summary>
+        <nav class="mobile-panel" aria-label="Mobile navigation">
+          <a href="index.html" >Home</a>
+          <a href="portfolio.html" aria-current="page">Work</a>
+          <a href="about.html" >About</a>
+          <a href="contact.html" >Contact</a>
+        </nav>
+      </details>
     </div>
   </div>
-</div>
-
+</header>
 <main id="main">
-
-  <section class="page-head">
-    <div class="wrap">
-      <h1 class="seq seq-1">Work</h1>
-      <p class="lede seq seq-2">
-        Six projects, in the order I&rsquo;d show them to someone deciding whether to hire me.
-        Code is on GitHub where it isn&rsquo;t coursework I&rsquo;m not allowed to publish.
-      </p>
+<section class="page-heading">
+  <div class="shell"><span class="eyebrow">Selected work</span><h1>Projects, systems, <em>and what I've learned.</em></h1>
+  <p>I care about more than getting a demo on screen. These projects explore architecture, usability, data, testing, and delivery—across individual work and collaborations.</p></div>
+</section>
+<section class="project-list"><div class="shell">
+  <span class="small-label">Featured engineering project</span>
+  <article class="featured-spotlight">
+    <div>
+      <span class="eyebrow">01 / Full-stack analytics · Team project</span>
+      <h2>E-Commerce Analytics Platform</h2>
+      <p>An analytics dashboard for exploring retail revenue, product performance, and customer spending. A React frontend consumes Spring Boot APIs backed by SQL reporting over a MariaDB dataset.</p>
+      <p>Our team delivered features across eight Scrum sprints. I worked extensively with GitLab CI/CD, troubleshooting automated lint/test checks and participating in the merge and delivery workflow.</p>
+      <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Spring Boot</span><span class="tag">MariaDB</span><span class="tag">Docker</span><span class="tag">GitLab CI/CD</span></div>
+      <div class="hero-actions"><a class="btn btn-primary" href="https://github.com/iamTMW/ecommerce-analytics-platform" target="_blank" rel="noopener noreferrer">View code & documentation ↗</a></div>
     </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="work-list">
-
-        <article class="work-row rv" id="edupro">
-          <div>
-            <h3>EduPro &mdash; AI-powered intelligent tutoring system</h3>
-            <p>A tutoring platform for grade 2 math that adapts to each student&rsquo;s skill level.
-               It generates personalised questions, gives step-by-step hints rather than answers,
-               and tracks progress for students, teachers and parents in one place.</p>
-            <div class="work-meta">
-              <span class="tag tag-live">Live</span>
-              <span class="tag">Next.js</span><span class="tag">JavaScript</span>
-              <span class="tag">Tailwind CSS</span><span class="tag">Python</span>
-              <span class="tag">Flask</span><span class="tag">scikit-learn</span>
-              <span class="tag">Google Gemini API</span>
-            </div>
-            <div class="btn-row" style="margin-top:20px">
-              <a class="btn btn-solid" href="https://edu-pro-ai-tutoring-system-10inezp13-tahas-projects-060a0e65.vercel.app" target="_blank" rel="noopener">Open the demo</a>
-              <a class="btn btn-ghost" href="https://github.com/iamTMW/edu-pro-ai-tutoring-system" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-          <figure class="shot" style="margin:0"><img src="images/tutorpic.jpg" alt="EduPro tutoring interface" data-ph="EduPro" loading="lazy"></figure>
-        </article>
-
-        <article class="work-row rv" id="chatbot">
-          <div>
-            <h3>Hotel concierge chatbot</h3>
-            <p>An assistant for hotel front desks. It reads a guest&rsquo;s question in plain language,
-               answers the routine ones instantly, and hands anything unusual to a human with the
-               context already gathered.</p>
-            <div class="work-meta">
-              <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span>
-            </div>
-            <div class="btn-row" style="margin-top:20px">
-              <a class="btn btn-solid" href="chatbot.html">Read the case study</a>
-              <a class="btn btn-ghost" href="https://github.com/iamTMW" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-          <figure class="shot" style="margin:0"><img src="images/chatlatoic.jpeg" alt="Chatbot conversation" data-ph="Chatbot" loading="lazy"></figure>
-        </article>
-
-        <article class="work-row rv" id="vcard">
-          <div>
-            <h3>vCard Manager</h3>
-            <p>A contact system split across three languages: a C backend that parses and validates
-               vCard 4.0 files, a Python terminal interface, and MySQL for persistence. Contacts stay
-               in sync between file and database in both directions.</p>
-            <div class="work-meta">
-              <span class="tag">C</span><span class="tag">Python</span><span class="tag">MySQL</span>
-              <span class="tag">Data structures</span><span class="tag">File I/O</span>
-            </div>
-            <div class="btn-row" style="margin-top:20px">
-              <a class="btn btn-ghost" href="https://github.com/iamTMW/vCard-Manager" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-          <figure class="shot" style="margin:0"><img src="images/vcardpic.png" alt="vCard manager terminal" data-ph="vCard Manager" loading="lazy"></figure>
-        </article>
-
-        <article class="work-row rv" id="grades">
-          <div>
-            <h3>Grade Manager Plus</h3>
-            <p>Students sign in to see their own marks and nobody else&rsquo;s. Teachers get charts that
-               surface a struggling student while there&rsquo;s still term left to do something about it.</p>
-            <div class="work-meta">
-              <span class="tag">C#</span><span class="tag">Windows</span><span class="tag">Databases</span>
-            </div>
-            <div class="btn-row" style="margin-top:20px">
-              <a class="btn btn-solid" href="grademan.html">Read the case study</a>
-              <a class="btn btn-ghost" href="https://github.com/iamTMW/GradeManagerPlus" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-          <figure class="shot" style="margin:0"><img src="images/grademanger3.avif" alt="Grade dashboard" data-ph="Grade Manager" loading="lazy"></figure>
-        </article>
-
-        <article class="work-row rv" id="investing">
-          <div>
-            <h3>Investment portfolio manager</h3>
-            <p>A desktop application for tracking stocks and mutual funds: buying, selling,
-               gain calculations and file persistence, written to hold up when the data gets messy.</p>
-            <div class="work-meta">
-              <span class="tag">Java</span><span class="tag">GUI</span><span class="tag">OOP</span>
-            </div>
-            <div class="btn-row" style="margin-top:20px">
-              <a class="btn btn-ghost" href="https://github.com/iamTMW/ePortfolio" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-          <figure class="shot" style="margin:0"><img src="images/stock.png" alt="Portfolio manager screen" data-ph="Portfolio Manager" loading="lazy"></figure>
-        </article>
-
-        <article class="work-row rv" id="app">
-          <div>
-            <h3>A mobile app, still in the workshop</h3>
-            <p>A platform that puts visual creativity and social interaction in the same place.
-               I&rsquo;m building it end to end &mdash; design, stack, and how it eventually pays for itself.
-               More when there&rsquo;s something worth showing.</p>
-            <div class="work-meta">
-              <span class="tag">In progress</span>
-              <span class="tag">Full-stack</span><span class="tag">UI/UX</span><span class="tag">Product strategy</span>
-            </div>
-          </div>
-          <figure class="shot" style="margin:0"><img src="images/comings.jpeg" alt="Placeholder artwork" data-ph="Coming soon" loading="lazy"></figure>
-        </article>
-
+    <div class="mini-system" aria-label="Simplified system architecture">
+      <h3>System overview</h3>
+      <div class="diagram-steps">
+        <div class="diagram-node">React dashboard <span>Frontend</span></div>
+        <div class="diagram-arrow" aria-hidden="true">↓</div>
+        <div class="diagram-node">Spring Boot REST API <span>Services</span></div>
+        <div class="diagram-arrow" aria-hidden="true">↓</div>
+        <div class="diagram-node">MariaDB & SQL <span>Data</span></div>
       </div>
+      <p style="color:#6b7b95;font-size:11px;margin:15px 0 0">Simplified architecture diagram · not an application screenshot</p>
     </div>
-  </section>
-
-  <!-- ===== Résumé, as a message thread ===== -->
-  <section class="section">
-    <div class="wrap">
-      <div class="thread rv">
-        <div class="thread-head">
-          <span class="thread-dot"></span> Taha
-        </div>
-        <div class="thread-body">
-          <p class="bubble them">Want my resume?</p>
-          <p class="bubble them">One page, everything on this site in short form.</p>
-          <a class="bubble file" href="images/TMW.pdf" target="_blank" rel="noopener">
-            <span>Taha-Mohyuddin-Resume.pdf</span>
-            <small>Open PDF</small>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <h2 class="rv">Want one of these built for you?</h2>
-      <p class="lede rv" style="margin-top:18px">Tell me the problem, not the tech stack. I&rsquo;ll come back with what I&rsquo;d build and how long it takes.</p>
-      <div class="btn-row rv" style="margin-top:30px">
-        <a class="btn btn-solid" href="/contact">Start a conversation</a>
-      </div>
-    </div>
-  </section>
-
+  </article>
+  <span class="small-label">Other selected projects</span>
+  <div class="project-grid">
+    <article class="project-card">
+  <div class="project-art art-education" aria-hidden="true"><div class="art-label">02 / EDUCATION</div><div class="art-name">EduPro</div></div>
+  <div class="project-content">
+    <span class="project-category">Web application · Team project</span>
+    <h3>EduPro</h3>
+    <p>A tutoring prototype with role-specific student, teacher and parent workflows, combining Next.js interfaces with Python services.</p>
+    <div class="tags"><span class="tag">Next.js</span><span class="tag">Flask</span><span class="tag">Python</span><span class="tag">UX</span></div>
+    <div class="project-footer"><a href="https://github.com/iamTMW/edu-pro-ai-tutoring-system" target="_blank" rel="noopener noreferrer">Explore repository ↗</a><span>Team contribution</span></div>
+  </div>
+</article>
+    <article class="project-card">
+  <div class="project-art art-grade" aria-hidden="true"><div class="art-label">03 / DESKTOP APP</div><div class="art-name">GradeManagerPlus</div></div>
+  <div class="project-content">
+    <span class="project-category">Desktop software</span>
+    <h3>GradeManagerPlus</h3>
+    <p>A Windows Forms grade-management prototype with separate student/admin views and database-backed records.</p>
+    <div class="tags"><span class="tag">C#</span><span class="tag">WinForms</span><span class="tag">Access</span></div>
+    <div class="project-footer"><a href="https://github.com/iamTMW/GradeManagerPlus" target="_blank" rel="noopener noreferrer">Explore repository ↗</a><span>Prototype</span></div>
+  </div>
+</article>
+    <article class="project-card">
+  <div class="project-art art-vcard" aria-hidden="true"><div class="art-label">04 / SYSTEMS</div><div class="art-name">vCard Manager</div></div>
+  <div class="project-content">
+    <span class="project-category">C & Python integration</span>
+    <h3>vCard Manager</h3>
+    <p>A terminal contact manager combining a native C vCard parser, Python interface and database integration.</p>
+    <div class="tags"><span class="tag">C</span><span class="tag">Python</span><span class="tag">MySQL</span></div>
+    <div class="project-footer"><a href="https://github.com/iamTMW/vCard-Manager" target="_blank" rel="noopener noreferrer">Explore repository ↗</a><span>Individual project</span></div>
+  </div>
+</article>
+    <article class="project-card">
+  <div class="project-art art-portfolio" aria-hidden="true"><div class="art-label">05 / SOFTWARE</div><div class="art-name">Portfolio Manager</div></div>
+  <div class="project-content">
+    <span class="project-category">Java desktop application</span>
+    <h3>Portfolio Manager</h3>
+    <p>A desktop application for tracking investment holdings, managing buy/sell transactions, and calculating gains.</p>
+    <div class="tags"><span class="tag">Java</span><span class="tag">Swing</span><span class="tag">File I/O</span></div>
+    <div class="project-footer"><a href="https://github.com/iamTMW/ePortfolio" target="_blank" rel="noopener noreferrer">Explore repository ↗</a><span>Individual project</span></div>
+  </div>
+</article>
+  </div>
+</div></section>
+<div class="shell"><section class="cta-band">
+  <div><h2>Interested in how I work?</h2><p>My experience in software development and real-world operations shapes the way I approach requirements, systems and execution.</p></div>
+  <a class="btn btn-dark" href="about.html">About my background ↗</a>
+</section></div>
 </main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-top">
-      <div style="max-width:32ch">
-        <h3 style="font-size:1.3rem;margin-bottom:10px">Taha Mohyuddin</h3>
-        <p class="small" style="color:var(--mute);margin:0">Computer science student in Ontario, building software with AI at the centre of it. Open to summer 2027 internships.</p>
-      </div>
-      <nav class="foot-nav" aria-label="Footer">
-        <a href="/">Home</a>
-        <a href="/work">Work</a>
-        <a href="/about">About</a>
-        <a href="/experience">Experience</a>
-        <a href="/notes">Notes</a>
-       <!--  <a href="test.html">Words</a> -->
-        <a href="/contact">Contact</a>
-      </nav>
-      <div class="foot-nav">
-        <a href="https://github.com/iamTMW" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/taha-mohyuddin-1795a522a" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:tahamohyuddin30@gmail.com">Email</a>
-        <a href="images/TMW.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>&copy; <span data-year>2026</span> Taha Mohyuddin</span>
-      <span>Designed and built by hand, in Milton, Ontario.</span>
-    </div>
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <p>© 2026 Taha Mohyuddin. Built with intention.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="portfolio.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="https://github.com/iamTMW" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/taha-mohyuddin-1795a522a" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:tahamohyuddin30@gmail.com">Email</a>
+    </nav>
   </div>
 </footer>
-
-<script src="app.js"></script>
 </body>
 </html>
