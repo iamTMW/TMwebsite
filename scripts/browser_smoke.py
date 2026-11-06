@@ -42,7 +42,14 @@ def main():
                     check(response is not None and response.status < 400, f"{label} {route}: HTTP failure")
                     check(page.locator("main").count() == 1, f"{label} {route}: main content missing")
                     overflow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
-                    check(overflow <= 5, f"{label} {route}: {overflow}px horizontal overflow")
+                    if overflow > 5:
+                        offenders = page.evaluate("""() => Array.from(document.querySelectorAll('*'))
+                            .map(e => ({el:e.tagName.toLowerCase(), cls:String(e.className).slice(0,90),
+                                left:Math.round(e.getBoundingClientRect().left),
+                                right:Math.round(e.getBoundingClientRect().right)}))
+                            .filter(x => x.right > innerWidth + 5 || x.left < -5)
+                            .slice(0,16)""")
+                        raise AssertionError(f"{label} {route}: {overflow}px horizontal overflow; elements={offenders}")
                     broken = page.locator("img").evaluate_all(
                         "(imgs) => imgs.filter(i => i.complete && i.naturalWidth === 0)"
                         ".map(i => i.getAttribute('src'))")
