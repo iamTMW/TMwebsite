@@ -8,6 +8,9 @@
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // Handle Vercel's clean URLs, e.g. /work -> portfolio.html.
+  var aliases = {'work':'portfolio.html','about':'about.html','experience':'services.html','notes':'blog.html','contact':'contact.html'};
+  if (aliases[page]) page = aliases[page];
 
   /* ---- mark the current page in both navs ---- */
   document.querySelectorAll('[data-nav]').forEach(function (a) {
