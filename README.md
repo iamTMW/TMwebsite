@@ -1,37 +1,56 @@
-# Personal Portfolio Website
+# Taha Mohyuddin — Portfolio Website
 
-The source code for my personal portfolio website, built to present my experience, projects, and interests across software engineering, business systems, and product development.
+A focused personal site for software engineering, business systems, and product-oriented roles.
 
-**Website:** [tahamohyuddin.com](https://tahamohyuddin.com)
+**Live website:** [tahamohyuddin.com](https://tahamohyuddin.com)  
+**Source:** HTML, CSS, minimal JavaScript (legacy pages), Vercel static hosting.
 
-**Stack:** HTML · CSS · JavaScript · Vercel configuration
+## Website structure
 
-## Repository structure
+The core portfolio is deliberately limited to **four pages**:
 
-- `index.html` — homepage
-- `about.html` — background
-- `portfolio.html` — selected projects
-- `contact.html` — contact information
-- `styles.css`, `app.js` — presentation and interactions
-- `images/`, `awards/` — media and supporting assets
-- `vercel.json` — hosting configuration
+| Page | Purpose |
+| --- | --- |
+| `index.html` | Clear introduction and curated projects |
+| `portfolio.html` | Technical project summaries and source links |
+| `about.html` | Education, operations leadership, and research |
+| `contact.html` | Direct email, GitHub, and LinkedIn links |
 
-## Development
+The new layout lives in `studio.css`. It does **not** rely on a JavaScript framework or animation library. It includes a responsive menu, keyboard-visible focus styles, semantic landmarks, and reduced-motion support.
 
-The site is primarily static HTML, CSS, and JavaScript. For local preview, serve the repository with a local static-file server rather than opening every page via `file://`.
+Legacy pages and their older `styles.css` / `app.js` are retained for now so existing content remains recoverable. The former Experience page routes readers to the consolidated About section, and retired legacy pages are excluded from search indexing.
 
-For example:
+## Preview the redesign locally
+
+From the repository directory:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Open `http://localhost:8000/index.html`. Navigate with the **Home / Work / About / Contact** header links.
 
-## Status
+### Branch workflow
 
-The content and media are undergoing a portfolio refresh. This codebase is public for reference, but some pages may still contain older wording or project material.
+This redesign is being developed in `redesign/focused-portfolio-2026` until visually reviewed. A pull request lets us compare all content and layout changes before changing the deployed main branch.
 
-## Notes
+If you check out the branch locally:
 
-There are no secrets required to preview the static pages. Keep environment files, private documents, and generated files out of Git. Some existing media assets are large and can be optimized in future updates.
+```bash
+git fetch origin
+git switch redesign/focused-portfolio-2026
+```
+
+If a local tracking branch does not exist, use `git switch --track origin/redesign/focused-portfolio-2026`.
+
+## Publication checklist
+
+- [ ] Review desktop and mobile layouts in a real browser.
+- [ ] Confirm all GitHub and LinkedIn links.
+- [ ] Review project descriptions and team credit.
+- [ ] Verify current resume content before adding a resume download link.
+- [ ] Review and remove retired legacy pages/assets after confirming nothing still needs them.
+- [ ] Optimize large media assets if they remain linked.
+- [ ] Merge redesign PR only when the updated site is approved.
+
+This site emphasizes **real, verifiable work**. In-progress projects are described as prototypes, and collaborative work is credited as such.
