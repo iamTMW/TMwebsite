@@ -1,37 +1,53 @@
 # Personal Portfolio Website
 
-The source code for my personal portfolio website, built to present my experience, projects, and interests across software engineering, business systems, and product development.
+Source for [tahamohyuddin.com](https://tahamohyuddin.com), built with HTML, CSS, JavaScript, and the original image-led, dark-and-amber visual design.
 
-**Website:** [tahamohyuddin.com](https://tahamohyuddin.com)
+## Original-site refinements (2026)
 
-**Stack:** HTML · CSS · JavaScript · Vercel configuration
+This update **keeps the existing website design, photographs, navigation, and content**. It is intentionally **not** a replacement template or a new design system.
 
-## Repository structure
+What was added or corrected:
 
-- `index.html` — homepage
-- `about.html` — background
-- `portfolio.html` — selected projects
-- `contact.html` — contact information
-- `styles.css`, `app.js` — presentation and interactions
-- `images/`, `awards/` — media and supporting assets
-- `vercel.json` — hosting configuration
+- A compact number strip on the home page: **3.7 / 4.0 GPA**, **20+ associates led**, **8 Scrum sprints**, and **~4% reported sales growth**.
+- The public **E-Commerce Analytics Platform** in the existing homepage selected-work list and project portfolio, with attribution to the team.
+- Current **CIS*4900 independent research on student burnout** in the existing About timeline and Experience carousel, without removing previous research or employment entries.
+- A brief mention of a separate receipt-management prototype within an existing in-progress project description (no Mohyu logo).
+- Updated 2027 career wording, corrected education details, and added missing skills such as Spring Boot, MariaDB, Docker, and GitLab CI/CD.
+- Minor favicon fixes and current-page navigation handling for Vercel clean URLs.
 
-## Development
+### Important note about the sales-growth metric
 
-The site is primarily static HTML, CSS, and JavaScript. For local preview, serve the repository with a local static-file server rather than opening every page via `file://`.
+The **~4%** figure is presented as an *approximate reported team outcome*, not a direct attribution to one individual. Confirm the measurement period, underlying source, and permission to share before merging this change publicly. No confidential dollar sales figures are included.
 
-For example:
+### Existing assets and layout
+
+All existing page sections, personal photographs, cricket content, employment cards, testimonial and notes pages, and original project imagery have been retained. The CSS changes are **additions to** the existing `styles.css`, not a redesign.
+
+## Local preview
+
+From the repository root:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Open `http://localhost:8000/index.html`.
 
-## Status
+To inspect this specific branch in VS Code:
 
-The content and media are undergoing a portfolio refresh. This codebase is public for reference, but some pages may still contain older wording or project material.
+```bash
+git fetch origin
+git switch --track origin/refine/keep-original-site-2026
+```
 
-## Notes
+If the local branch already exists, use `git switch refine/keep-original-site-2026` instead. Preserve any uncommitted local edits before switching branches.
 
-There are no secrets required to preview the static pages. Keep environment files, private documents, and generated files out of Git. Some existing media assets are large and can be optimized in future updates.
+## Review before merging
+
+- [ ] Check layout on desktop and mobile.
+- [ ] Verify the 4% figure and public-sharing permission.
+- [ ] Check new E-Commerce project links and existing image assets.
+- [ ] Review any legacy experience descriptions for accuracy.
+- [ ] Confirm the live contact form and resume PDF still meet your needs.
+
+This is a small, additive enhancement to the official website, not a deletion or replacement.
