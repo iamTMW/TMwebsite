@@ -813,3 +813,23 @@ body{line-height:1.7;}
 @media (max-width:520px) {
   .chan a { flex-wrap:wrap; overflow-wrap:anywhere; }
 }
+
+/* Proof captions: preserve the warmth while keeping claims contextualized. */
+.proof-footnote{
+  width:min(var(--w),100%);
+  padding:0 var(--pad) 20px;
+  margin:0 auto;
+  color:var(--mute);
+  font-size:.72rem;
+  line-height:1.55;
+  letter-spacing:.005em;
+}
+.about-proof{grid-template-columns:repeat(4,minmax(0,1fr));}
+.about-proof .stat{min-width:0;}
+.about-proof .stat span{overflow-wrap:anywhere;}
+@media(max-width:1000px){
+  .about-proof{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:560px){
+  .about-proof{grid-template-columns:1fr;}
+}
