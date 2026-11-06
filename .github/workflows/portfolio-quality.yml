@@ -1,0 +1,52 @@
+name: Portfolio quality checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Links, JavaScript and browser smoke tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate pages, media paths and Vercel routes
+        run: python scripts/verify_site.py
+
+      - name: Check JavaScript syntax
+        run: node --check app.js
+
+      - name: Install Chromium test tools
+        run: |
+          python -m pip install 'playwright>=1.55,<2'
+          python -m playwright install --with-deps chromium
+
+      - name: Run desktop/mobile browser checks
+        run: python scripts/browser_smoke.py
+
+      - name: Save desktop and mobile review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-review-screenshots
+          path: test-screenshots/*.png
+          if-no-files-found: ignore

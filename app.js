@@ -7,7 +7,11 @@
   'use strict';
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js-enhanced');
   var page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // Handle Vercel's clean URLs, e.g. /work -> portfolio.html.
+  var aliases = {'work':'portfolio.html','about':'about.html','experience':'services.html','notes':'blog.html','contact':'contact.html'};
+  if (aliases[page]) page = aliases[page];
 
   /* ---- mark the current page in both navs ---- */
   document.querySelectorAll('[data-nav]').forEach(function (a) {
@@ -29,12 +33,23 @@
   /* ---- mobile menu sheet ---- */
   var sheet = document.getElementById('sheet');
   if (sheet) {
+    var lastTrigger = null;
+    sheet.setAttribute('aria-hidden', 'true');
+    sheet.inert = true;
     var openSheet = function (on) {
       sheet.classList.toggle('open', on);
+      sheet.setAttribute('aria-hidden', on ? 'false' : 'true');
+      sheet.inert = !on;
       document.body.style.overflow = on ? 'hidden' : '';
+      if (on) {
+        var closeButton = sheet.querySelector('[data-sheet-close]');
+        if (closeButton) closeButton.focus();
+      } else if (lastTrigger) {
+        lastTrigger.focus();
+      }
     };
     document.querySelectorAll('[data-sheet-open]').forEach(function (b) {
-      b.addEventListener('click', function () { openSheet(true); });
+      b.addEventListener('click', function () { lastTrigger = b; openSheet(true); });
     });
     sheet.addEventListener('click', function (e) {
       if (e.target === sheet || e.target.closest('[data-sheet-close]')) openSheet(false);
@@ -191,9 +206,12 @@
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(Object.fromEntries(new FormData(form)))
       })
-        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          if (!r.ok) throw new Error('Form service returned ' + r.status);
+          return r.json();
+        })
         .then(function (d) {
-          if (String(d.success) === 'true') { say('Message sent. I\u2019ll reply within a day or two.', true); form.reset(); }
+          if (String(d.success) === 'true') { say('Message sent. Thanks for reaching out!', true); form.reset(); }
           else { say('That didn\u2019t go through. Email me directly instead.', false); }
         })
         .catch(function () { say('That didn\u2019t go through. Email me directly instead.', false); })

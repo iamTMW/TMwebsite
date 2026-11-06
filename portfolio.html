@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#141210">
   <meta name="author" content="Taha Mohyuddin">
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/images/TMfavicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <title>Work — Taha Mohyuddin</title>
+  <title>Work | Taha Mohyuddin</title>
   <meta name="description" content="Projects by Taha Mohyuddin: an AI tutoring platform, a hotel chatbot, a grade management system, an investment portfolio manager and a cross-language vCard manager.">
 </head>
 <body>
@@ -41,7 +41,7 @@
   <button type="button" data-sheet-open aria-haspopup="dialog"><span class="pip"></span>More</button>
 </nav>
 
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="All pages">
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-hidden="true" inert aria-label="All pages">
   <div class="sheet-panel">
     <div class="sheet-grab"></div>
     <a href="/">Home <small>Start here</small></a>
@@ -64,7 +64,7 @@
     <div class="wrap">
       <h1 class="seq seq-1">Work</h1>
       <p class="lede seq seq-2">
-        Six projects, in the order I&rsquo;d show them to someone deciding whether to hire me.
+        Seven selected projects, from collaborative systems to individual builds and prototypes.
         Code is on GitHub where it isn&rsquo;t coursework I&rsquo;m not allowed to publish.
       </p>
     </div>
@@ -74,21 +74,45 @@
     <div class="wrap">
       <div class="work-list">
 
+        <!-- E-Commerce Analytics: public collaboration; team attribution preserved -->
+        <article class="work-row rv" id="ecommerce">
+          <div>
+            <p class="project-kicker">NEW · FULL-STACK / ANALYTICS / CI/CD</p>
+            <h3>E-Commerce Analytics Platform</h3>
+            <p>A team-built analytics dashboard for exploring revenue, customer spending and product
+               performance. The React frontend consumes Spring Boot REST APIs backed by MariaDB.
+               My work included troubleshooting GitLab CI/CD checks, automated lint and tests,
+               and collaborating across eight Scrum sprints.</p>
+            <div class="work-meta">
+              <span class="tag">React</span><span class="tag">TypeScript</span>
+              <span class="tag">Spring Boot</span><span class="tag">MariaDB</span>
+              <span class="tag">Docker</span><span class="tag">GitLab CI/CD</span>
+            </div>
+            <div class="btn-row" style="margin-top:20px">
+              <a class="btn btn-solid" href="https://github.com/iamTMW/ecommerce-analytics-platform" target="_blank" rel="noopener noreferrer">View project on GitHub ↗</a>
+            </div>
+            <p class="work-ownership">Collaborative project · Individual contributors credited in Git history</p>
+          </div>
+          <figure class="shot" style="margin:0">
+            <img src="images/data.jpeg" alt="Illustration representing retail data analytics" loading="lazy">
+          </figure>
+        </article>
+
         <article class="work-row rv" id="edupro">
           <div>
-            <h3>EduPro &mdash; AI-powered intelligent tutoring system</h3>
+            <h3>EduPro: intelligent tutoring system</h3>
             <p>A tutoring platform for grade 2 math that adapts to each student&rsquo;s skill level.
                It generates personalised questions, gives step-by-step hints rather than answers,
                and tracks progress for students, teachers and parents in one place.</p>
             <div class="work-meta">
-              <span class="tag tag-live">Live</span>
+              <span class="tag">Team prototype</span>
               <span class="tag">Next.js</span><span class="tag">JavaScript</span>
               <span class="tag">Tailwind CSS</span><span class="tag">Python</span>
               <span class="tag">Flask</span><span class="tag">scikit-learn</span>
               <span class="tag">Google Gemini API</span>
             </div>
             <div class="btn-row" style="margin-top:20px">
-              <a class="btn btn-solid" href="https://edu-pro-ai-tutoring-system-10inezp13-tahas-projects-060a0e65.vercel.app" target="_blank" rel="noopener">Open the demo</a>
+              <a class="btn btn-solid" href="https://github.com/iamTMW/edu-pro-ai-tutoring-system" target="_blank" rel="noopener noreferrer">Explore project code</a>
               <a class="btn btn-ghost" href="https://github.com/iamTMW/edu-pro-ai-tutoring-system" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
@@ -132,8 +156,8 @@
         <article class="work-row rv" id="grades">
           <div>
             <h3>Grade Manager Plus</h3>
-            <p>Students sign in to see their own marks and nobody else&rsquo;s. Teachers get charts that
-               surface a struggling student while there&rsquo;s still term left to do something about it.</p>
+            <p>A desktop grade-management prototype with student and administrator views,
+               database records, and visual reports.</p>
             <div class="work-meta">
               <span class="tag">C#</span><span class="tag">Windows</span><span class="tag">Databases</span>
             </div>
@@ -164,8 +188,8 @@
           <div>
             <h3>A mobile app, still in the workshop</h3>
             <p>A platform that puts visual creativity and social interaction in the same place.
-               I&rsquo;m building it end to end &mdash; design, stack, and how it eventually pays for itself.
-               More when there&rsquo;s something worth showing.</p>
+               I&rsquo;m working on the design, technical stack, and how the idea could become sustainable.
+               More when there&rsquo;s something worth showing. I&rsquo;m also exploring a separate receipt-management prototype for scanning and organizing purchases.</p>
             <div class="work-meta">
               <span class="tag">In progress</span>
               <span class="tag">Full-stack</span><span class="tag">UI/UX</span><span class="tag">Product strategy</span>
