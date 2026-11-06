@@ -759,3 +759,12 @@ html.js-enhanced .rv.in{opacity:1;transform:none;}
   .chan a{flex-wrap:wrap;overflow-wrap:anywhere;}
   .chan a span{overflow-wrap:anywhere;}
 }
+
+/* Mobile: do not let the hero's intrinsic text width expand its grid track. */
+@media(max-width:860px){
+  .hero .wrap.hero-grid{grid-template-columns:minmax(0,1fr);}
+  .hero .hero-copy{min-width:0;width:100%;max-width:100%;}
+  .hero .hero-copy>*{max-width:100%;}
+  .hero .hero-copy h1{overflow-wrap:break-word;}
+  .hero .hero-cta .btn{min-width:0;max-width:100%;}
+}
