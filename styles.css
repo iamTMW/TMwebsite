@@ -805,3 +805,11 @@ body{line-height:1.7;}
   .section-head h2{max-width:unset;}
   .project-schematic{min-height:250px;}
 }
+
+@media (max-width:800px) {
+  .responsive-split { grid-template-columns:1fr !important; }
+  .about-feature-photo { width:min(340px,100%); margin-inline:auto !important; }
+}
+@media (max-width:520px) {
+  .chan a { flex-wrap:wrap; overflow-wrap:anywhere; }
+}
