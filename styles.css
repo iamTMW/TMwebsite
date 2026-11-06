@@ -742,3 +742,20 @@
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;}
 }
+
+/* Progressive enhancement: reveal content without JavaScript or if a script fails. */
+.rv{opacity:1;transform:none;}
+html.js-enhanced .rv{opacity:0;transform:translateY(10px);}
+html.js-enhanced .rv.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  html.js-enhanced .rv{opacity:1;transform:none;}
+}
+/* The About portrait and contact form use two-column layouts only on wider screens. */
+@media(max-width:860px){
+  .about-intro-grid,.contact-intro-grid{grid-template-columns:1fr !important;}
+  .about-intro-grid .shot{max-width:420px;margin-inline:auto !important;}
+}
+@media(max-width:520px){
+  .chan a{flex-wrap:wrap;overflow-wrap:anywhere;}
+  .chan a span{overflow-wrap:anywhere;}
+}
