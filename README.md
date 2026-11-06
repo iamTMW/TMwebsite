@@ -28,7 +28,7 @@ All existing page sections, personal photographs, cricket content, employment ca
 From the repository root:
 
 ```bash
-python3 -m http.server 8000
+python3 scripts/preview.py
 ```
 
 Open `http://localhost:8000/index.html`.
@@ -51,3 +51,21 @@ If the local branch already exists, use `git switch refine/keep-original-site-20
 - [ ] Confirm the live contact form and resume PDF still meet your needs.
 
 This is a small, additive enhancement to the official website, not a deletion or replacement.
+
+## Quality checks
+
+Automated checks run on every pull request:
+
+- Internal links, assets, HTML metadata and anchors: `python3 scripts/verify_site.py`
+- JavaScript syntax: `node --check app.js`
+- Desktop and mobile browser smoke checks: `python3 scripts/browser_smoke.py` (requires Playwright and Chromium)
+
+The browser suite checks primary and legacy pages, photo loading, horizontal overflow, About tabs, Experience cards, the mobile navigation sheet, and contact-form feedback **with a mocked submission**. It does **not** send a real message or prove that FormSubmit has been activated.
+
+Check the **Portfolio quality checks** workflow on GitHub and review the screenshot artifact before approving deployment.
+
+## Publishing notes
+
+The public pages retain all their original photos and sections. The visible website copy avoids long, formulaic dash punctuation. E-Commerce Analytics is shown as a team project, and the EduPro source repository is linked instead of claiming an unverified live demo.
+
+A real form delivery test, review of older experience claims, and confirmation that the reported ~4% sales metric can be shared are still needed.
