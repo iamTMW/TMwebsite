@@ -21,6 +21,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 const SITE = 'https://www.tahamohyuddin.com';
+// Vercel Web Analytics loads only when enabled for the project and flagged at build time,
+// otherwise /_vercel/insights/script.js returns 404 for every visitor.
+const ANALYTICS = process.env.ENABLE_VERCEL_ANALYTICS === '1';
 
 // test.html holds third-party testimonials that have not been re-confirmed for publication.
 const EXCLUDE = new Set(['test.html']);
@@ -133,7 +136,7 @@ async function main() {
 <head>
 ${head}
 </head>
-<body data-page="${esc(meta.nav || '')}">
+<body data-page="${esc(meta.nav || '')}"${ANALYTICS ? ' data-analytics="vercel"' : ''}>
 ${header}
 ${body.trim()}
 ${footerTpl}

@@ -84,7 +84,7 @@ If anything required is missing, the endpoint logs the **names** of the missing 
 3. Add the variables above in Vercel (Production). Start with `VISIT_EMAIL_MODE=mock`, deploy, open the
    site in a private window, and check the function logs for `[visit:mock-email]`.
 4. Switch to `VISIT_EMAIL_MODE=send` and redeploy. To turn alerts off, set `VISIT_NOTIFY_ENABLED=false`.
-5. Optional: enable **Web Analytics** in the Vercel project. The script loads only on the production domain.
+5. Optional: enable **Web Analytics** in the Vercel project, then add the build variable `ENABLE_VERCEL_ANALYTICS=1` and redeploy. Without both, no analytics script is loaded (avoids a 404 on every page).
 
 ## Contact form
 

@@ -364,7 +364,7 @@
   var isProd = /(^|\.)tahamohyuddin\.com$/.test(location.hostname);
   var optedOut = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
 
-  if (isProd) {
+  if (isProd && document.body.getAttribute('data-analytics') === 'vercel') {
     var va = document.createElement('script');
     va.src = '/_vercel/insights/script.js';
     va.defer = true;
