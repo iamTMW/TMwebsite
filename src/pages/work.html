@@ -1,0 +1,220 @@
+<!--page {
+  "title": "Work | Taha Mohyuddin",
+  "description": "Projects by Taha Mohyuddin: OpsRelay (AI-assisted incident response), Simply (Flutter receipt manager), an e-commerce analytics platform, EduPro, and earlier systems work.",
+  "path": "/work",
+  "nav": "work"
+}-->
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow seq">Work</p>
+      <h1 class="seq seq-2">Projects</h1>
+      <p class="lede seq seq-3">
+        Newest first. Most were built with teams, so each one says what I worked on. Code is linked wherever
+        it&rsquo;s public.
+      </p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="Filter projects" data-filters hidden>
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI</button>
+      <button class="chip" type="button" data-filter="web" aria-pressed="false">Web</button>
+      <button class="chip" type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
+      <button class="chip" type="button" data-filter="data" aria-pressed="false">Data</button>
+      <button class="chip" type="button" data-filter="systems" aria-pressed="false">Systems</button>
+      <span class="filter-status" role="status" aria-live="polite" data-filter-status></span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0" aria-labelledby="featured-h" data-filter-section>
+    <div class="wrap">
+      <h2 id="featured-h" class="sr-only">Featured project</h2>
+      <article class="feature rv" id="opsrelay" data-tags="ai web systems">
+        <div class="feature-body">
+          <p class="kicker">Featured · Hackathon team project · November 2026</p>
+          <h3>OpsRelay</h3>
+          <p class="feature-tagline">AI-assisted incident response, with a person in charge of every fix.</p>
+          <p>
+            OpsRelay monitors two demo apps for real user-facing failures. When a probe fails, a Python agent
+            reproduces the bug, diagnoses it from quoted evidence, and tests candidate fixes against the
+            suite. A passing fix opens as a draft pull request, and a person decides whether to merge it.
+          </p>
+          <p class="points-label">My contributions</p>
+          <ul class="points">
+            <li><b>NovaMart:</b> the demo storefront, with a Next.js front end, FastAPI checkout and pricing, and a side-effect-free checkout probe.</li>
+            <li><b>NovaConnect:</b> the real-time messenger, using WebSockets, delivery and read receipts, and its own functional probe.</li>
+            <li><b>Monitoring:</b> the first uptime monitor and status dashboard, including the incident lifecycle and the evidence hand-off to the agent.</li>
+          </ul>
+          <p class="stackline"><span>Next.js</span><span>FastAPI</span><span>Python</span><span>MongoDB Atlas</span><span>GitHub Actions</span></p>
+          <p class="muted small" style="margin-top:14px">With Faiz Mustansar, Mohamed Salih and Hamza Memon, who built the repair agent.</p>
+          <div class="links">
+            <a href="/work/opsrelay">Read the case study</a>
+            <a class="ext" href="https://github.com/faizm10/opsrelay-agent" target="_blank" rel="noopener">GitHub </a>
+            <a class="ext" href="https://opsrelay-dashboard.vercel.app" target="_blank" rel="noopener">Live dashboard (sign-in required) </a>
+          </div>
+        </div>
+        <div class="feature-aside">
+          <p class="flow-title">How an incident is handled</p>
+          <!--include:opsrelay-flow-->
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="recent-title" data-filter-section>
+    <div class="wrap">
+      <div class="section-head rv"><h2 id="recent-title">Recent projects</h2></div>
+      <div class="rows">
+
+        <article class="row-p rv" id="simply" data-tags="mobile">
+          <div class="media">
+            <div class="phones">
+              <a href="/images/opt/simply-login.webp" data-lightbox="simply" data-caption="Simply: sign-in screen (my work)"><img src="/images/opt/simply-login.webp" alt="Simply sign-in screen" width="780" height="1688" loading="lazy"></a>
+              <a href="/images/opt/simply-home.webp" data-lightbox="simply" data-caption="Simply: home, with demo data"><img src="/images/opt/simply-home.webp" alt="Simply home screen with monthly spending, recent receipts and upcoming returns" width="780" height="1688" loading="lazy"></a>
+              <a href="/images/opt/simply-insights.webp" data-lightbox="simply" data-caption="Simply: spending insights, with demo data"><img src="/images/opt/simply-insights.webp" alt="Simply spending insights by category" width="780" height="1688" loading="lazy"></a>
+              <a href="/images/opt/simply-add.webp" data-lightbox="simply" data-caption="Simply: add a receipt by camera, gallery or manual entry" class="sr-only">View the add-receipt screen</a>
+            </div>
+          </div>
+          <div class="body">
+            <div class="main"><p class="kicker">Mobile · Flutter · In progress, fall 2026</p>
+            <h3>Simply</h3>
+            <p>
+              A receipt manager for people who lose paper receipts and miss return windows. You photograph a
+              receipt or type it in, review the details, and Simply organises purchases by store and category,
+              shows monthly spending, and keeps return and warranty dates in view.
+            </p>
+            <p>
+              Capture goes through a parser interface. The current build uses a mock parser, and a
+              model-backed parser is planned for the next milestone.
+            </p>
+            </div>
+            <div class="side">
+            <p class="points-label">My contributions</p>
+            <ul class="points">
+              <li>The sign-in and sign-up screens, with form validation.</li>
+              <li>The shared receipt data model and mock data the team builds against.</li>
+              <li>The central theme and brand components.</li>
+            </ul>
+            <p class="stackline"><span>Flutter</span><span>Dart</span><span>Widget tests</span><span>Team of 5</span></p>
+            <p class="note">University course project. The repository is private to the course, and the screens use demo data.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="row-p rv" id="ecommerce" data-tags="web data">
+          <div class="media">
+            <div class="schema" aria-hidden="true">
+              <div><b>React</b><small>TypeScript dashboard, Chart.js</small></div><i></i>
+              <div><b>Spring Boot</b><small>REST API, SQL aggregation</small></div><i></i>
+              <div><b>MariaDB</b><small>Online Retail II data</small></div>
+            </div>
+            <span class="caption">Architecture</span>
+          </div>
+          <div class="body">
+            <div class="main"><p class="kicker">Full-stack · Analytics · 2026</p>
+            <h3>E-Commerce Analytics Platform</h3>
+            <p>
+              A team-built dashboard for revenue trends, top products and customer spending, built on the public
+              UCI Online Retail II dataset. A React and TypeScript front end calls a Spring Boot REST API that
+              does the aggregation in SQL over MariaDB, and Docker Compose runs the stack locally.
+            </p>
+            </div>
+            <div class="side">
+            <p class="points-label">My contributions</p>
+            <ul class="points">
+              <li>Troubleshot the GitLab CI/CD pipeline: ESLint, Checkstyle, front-end tests and JaCoCo coverage.</li>
+              <li>Validated changes during merges, and documented API contracts and UML diagrams across eight Scrum sprints.</li>
+            </ul>
+            <p class="stackline"><span>React</span><span>TypeScript</span><span>Spring Boot</span><span>MariaDB</span><span>Docker</span></p>
+            <div class="links"><a class="ext" href="https://github.com/iamTMW/ecommerce-analytics-platform" target="_blank" rel="noopener">GitHub </a></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="row-p rv" id="edupro" data-tags="web ai">
+          <div class="media">
+            <a class="browser" href="/images/opt/edupro-home.webp" data-lightbox="edupro" data-caption="EduPro: live front-end demo"><img src="/images/opt/edupro-home.webp" alt="EduPro landing page" width="1440" height="900" loading="lazy"></a>
+          </div>
+          <div class="body">
+            <div class="main"><p class="kicker">Web · AI · 2025</p>
+            <h3>EduPro</h3>
+            <p>
+              An adaptive tutoring prototype for grade 2 math that gives guided hints instead of answers.
+              Students, teachers and parents each get their own view. It has a Next.js front end and a Flask
+              API with Python question-generation modules.
+            </p>
+            </div>
+            <div class="side">
+            <p class="points-label">My contributions</p>
+            <ul class="points">
+              <li>Turned each role&rsquo;s needs into user flows, use cases and wireframes that guided the interface.</li>
+            </ul>
+            <p class="stackline"><span>Next.js</span><span>Flask</span><span>Python</span><span>Team of 6</span></p>
+            <div class="links">
+              <a class="ext" href="https://github.com/iamTMW/edu-pro-ai-tutoring-system" target="_blank" rel="noopener">GitHub </a>
+              <a class="ext" href="https://edu-pro-ai-tutoring-system.vercel.app" target="_blank" rel="noopener">Front-end demo </a>
+            </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="earlier-title" data-filter-section>
+    <div class="wrap">
+      <div class="section-head rv">
+        <h2 id="earlier-title">Earlier work</h2>
+        <p>Coursework and personal projects where I learned parsing, persistence, roles and testing.</p>
+      </div>
+      <div class="more-list rv">
+        <div class="more-row" id="vcard" data-tags="systems data">
+          <div>
+            <h3>vCard Manager</h3>
+            <p>A C library that parses and validates vCard 4.0 files, a Python terminal UI that calls it, and MySQL for storing and querying contacts.</p>
+          </div>
+          <div class="links"><a class="ext" href="https://github.com/iamTMW/vCard-Manager" target="_blank" rel="noopener">GitHub </a></div>
+        </div>
+        <div class="more-row" id="grades" data-tags="systems data">
+          <div>
+            <h3>Grade Manager Plus</h3>
+            <p>A C# Windows Forms app with separate administrator and student views, a marks graph, and per-student averages.</p>
+          </div>
+          <div class="links"><a href="/grademan">Details</a><a class="ext" href="https://github.com/iamTMW/GradeManagerPlus" target="_blank" rel="noopener">GitHub </a></div>
+        </div>
+        <div class="more-row" id="investing" data-tags="systems">
+          <div>
+            <h3>Investment portfolio manager</h3>
+            <p>A Java Swing app for buying and selling stocks and mutual funds, searching holdings, calculating gains, and saving to file.</p>
+          </div>
+          <div class="links"><a class="ext" href="https://github.com/iamTMW/ePortfolio" target="_blank" rel="noopener">GitHub </a></div>
+        </div>
+        <div class="more-row" id="chatbot" data-tags="ai web">
+          <div>
+            <h3>Hotel concierge chatbot</h3>
+            <p>A Python, Flask and OpenAI API assistant that answers routine front-desk questions and hands unusual ones to staff.</p>
+          </div>
+          <div class="links"><a href="/chatbot">Details</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div>
+        <h2 class="rv">Want the short version?</h2>
+        <p class="rv">My resume covers all of this on one page.</p>
+      </div>
+      <div class="btn-row rv">
+        <a class="btn btn-solid" href="/resume" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="btn btn-ghost" href="/contact">Contact me</a>
+      </div>
+    </div>
+  </section>
+
+</main>

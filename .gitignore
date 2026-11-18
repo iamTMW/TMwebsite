@@ -1,5 +1,10 @@
 .vercel
 .env*
+!.env.example
+node_modules/
+dist/
+test-screenshots/
 .DS_Store
 Thumbs.db
 *.log
+__pycache__/

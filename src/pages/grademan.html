@@ -1,0 +1,60 @@
+<!--page {
+  "title": "Grade Manager Plus | Taha Mohyuddin",
+  "description": "An early C# Windows Forms project: a grade manager with separate administrator and student views, a database of student records, and a marks graph.",
+  "path": "/grademan",
+  "nav": "case"
+}-->
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap wrap-read">
+      <a class="back seq" href="/work#grades">&#8592; All work</a>
+      <p class="eyebrow seq seq-2">Earlier project · C# · Windows Forms · SQL</p>
+      <h1 class="seq seq-2">Grade Manager Plus</h1>
+      <p class="lede seq seq-3">
+        A desktop app for a small class. An administrator sees every student&rsquo;s marks, averages and a
+        marks graph, and can register new students. Students sign in and see only their own grades.
+      </p>
+      <div class="btn-row seq seq-4" style="margin-top:26px">
+        <a class="btn btn-ghost" href="https://github.com/iamTMW/GradeManagerPlus" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap wrap-read">
+      <h2 class="sr-only">Highlights</h2>
+      <div class="grid g-3 rv">
+        <div class="card feat"><h3>Two roles, two views</h3>
+          <p>An administrator form with class-wide data and a student form limited to the signed-in student&rsquo;s records.</p></div>
+        <div class="card feat"><h3>Database-backed</h3>
+          <p>Student records, marks and passwords live in a local database accessed through OleDb, including a forgot-password flow.</p></div>
+        <div class="card feat"><h3>Visual reporting</h3>
+          <p>A marks graph and per-student averages for the administrator.</p></div>
+      </div>
+      <div class="prose rv" style="margin-top:36px">
+        <h2 style="font-size:1.5rem;color:var(--text);margin-bottom:12px">What I&rsquo;d change today</h2>
+        <p>
+          This was early coursework, and the login builds its SQL query by joining strings and compares
+          plain-text passwords. Rebuilding it now, I&rsquo;d use parameterised queries everywhere, store salted
+          password hashes, and make roles a property of the account rather than a special username.
+          Writing that down is part of the point: this is the code I learned from.
+        </p>
+      </div>
+      <p class="stackline rv"><span>C#</span><span>Windows Forms</span><span>OleDb</span><span>SQL</span></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div>
+        <h2 class="rv">See something newer</h2>
+      </div>
+      <div class="btn-row rv">
+        <a class="btn btn-solid" href="/work/opsrelay">OpsRelay case study</a>
+        <a class="btn btn-ghost" href="/work">All work</a>
+      </div>
+    </div>
+  </section>
+
+</main>

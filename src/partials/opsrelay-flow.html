@@ -1,0 +1,7 @@
+<ol class="flow" aria-label="How OpsRelay handles an incident">
+  <li><strong>Detect</strong><span>A functional probe fails, such as a checkout that no longer completes.</span></li>
+  <li><strong>Reproduce</strong><span>The failing tests are rerun before any model is called.</span></li>
+  <li><strong>Diagnose</strong><span>Evidence must be quoted from the real logs and code.</span></li>
+  <li><strong>Verify</strong><span>A candidate fix must pass the failing tests and the full suite.</span></li>
+  <li><strong>Review</strong><span>The fix opens as a draft pull request. A person decides whether to merge.</span></li>
+</ol>
