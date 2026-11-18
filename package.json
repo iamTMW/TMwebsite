@@ -5,7 +5,7 @@
   "description": "Personal portfolio for Taha Mohyuddin: static site plus one serverless endpoint.",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": "24.x"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
