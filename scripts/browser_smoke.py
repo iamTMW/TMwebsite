@@ -2,6 +2,8 @@
 
 Requires: python3 -m pip install 'playwright>=1.55,<2' && python3 -m playwright install chromium
 Run:      npm run build && python3 scripts/browser_smoke.py
+Remote:   SMOKE_BASE_URL=https://<preview>.vercel.app VERCEL_AUTOMATION_BYPASS_SECRET=... python3 scripts/browser_smoke.py
+          (tests a deployed preview through Vercel Deployment Protection; real response headers are checked)
 
 Production response headers (including the Content-Security-Policy) from vercel.json are
 applied to every local response, so CSP violations fail the run. External form and email
@@ -36,9 +38,22 @@ def check(cond, msg):
         raise AssertionError(msg)
 
 
+REMOTE = os.environ.get("SMOKE_BASE_URL", "").rstrip("/")
+BYPASS = os.environ.get("VERCEL_AUTOMATION_BYPASS_SECRET", "")
+
+
+def new_context(browser, **kw):
+    if REMOTE and BYPASS:
+        kw["extra_http_headers"] = {"x-vercel-protection-bypass": BYPASS, "x-vercel-set-bypass-cookie": "true"}
+    return browser.new_context(**kw)
+
+
 def with_prod_headers(context, base):
-    # Safety net: no request may leave the machine. Specific mocks (page.route) take precedence.
-    context.route(re.compile(r"^(?!http://127\.0\.0\.1)"), lambda route: route.abort())
+    # Safety net: only the site under test is reachable. Specific mocks (page.route) take precedence.
+    allowed = re.escape(base)
+    context.route(re.compile(rf"^(?!{allowed})"), lambda route: route.abort())
+    if REMOTE:
+        return   # real deployment: its own headers are under test
 
     def handler(route):
         if not route.request.url.startswith(base):
@@ -58,9 +73,13 @@ def scroll_through(page):
 
 
 def main():
-    server = ThreadingHTTPServer(("127.0.0.1", 0), SiteHandler)
-    Thread(target=server.serve_forever, daemon=True).start()
-    base = f"http://127.0.0.1:{server.server_port}"
+    server = None
+    if REMOTE:
+        base = REMOTE
+    else:
+        server = ThreadingHTTPServer(("127.0.0.1", 0), SiteHandler)
+        Thread(target=server.serve_forever, daemon=True).start()
+        base = f"http://127.0.0.1:{server.server_port}"
     OUT.mkdir(exist_ok=True)
     passed = []
     try:
@@ -68,7 +87,7 @@ def main():
             browser = p.chromium.launch()
 
             for label, w, h in (("desktop", 1366, 900), ("tablet", 820, 1180), ("mobile", 390, 844)):
-                ctx = browser.new_context(viewport={"width": w, "height": h})
+                ctx = new_context(browser, viewport={"width": w, "height": h})
                 with_prod_headers(ctx, base)
                 page = ctx.new_page()
                 problems = []
@@ -111,7 +130,7 @@ def main():
                 ctx.close()
 
             # ---- behaviour checks (desktop) ----
-            ctx = browser.new_context(viewport={"width": 1280, "height": 900}, color_scheme="dark")
+            ctx = new_context(browser, viewport={"width": 1280, "height": 900}, color_scheme="dark")
             with_prod_headers(ctx, base)
             page = ctx.new_page()
 
@@ -124,6 +143,21 @@ def main():
             r = page.request.get(base + "/resume", max_redirects=5)
             check(r.ok and r.headers.get("content-type", "").startswith("application/pdf"), "/resume does not serve a PDF")
             passed.append("redirects, /resume PDF and custom 404")
+
+            if REMOTE:
+                r = page.request.get(base + "/")
+                hdr = r.headers
+                for key in ("content-security-policy", "x-frame-options", "x-content-type-options",
+                            "referrer-policy", "strict-transport-security", "permissions-policy"):
+                    check(key in hdr, f"missing response header {key}")
+                check("script-src 'self'" in hdr["content-security-policy"], "CSP script-src not strict")
+                r = page.request.post(base + "/api/visit", data='{"sid":"' + "0" * 32 + '","path":"/"}',
+                                      headers={"content-type": "application/json", "origin": base})
+                check(r.status in (204, 403), f"/api/visit unexpected status {r.status}")
+                check(r.headers.get("cache-control", "").startswith("no-store"), "/api/visit not no-store")
+                r = page.request.get(base + "/api/visit")
+                check(r.status == 405, f"GET /api/visit should be 405, got {r.status}")
+                passed.append("remote: security headers present, /api/visit deployed (POST quiet, GET 405)")
 
             # Theme toggle persists
             page.goto(base + "/", wait_until="load")
@@ -193,7 +227,7 @@ def main():
 
             # Visit beacon: once per session, mocked endpoint
             def beacon_context(gpc=False):
-                c = browser.new_context(viewport={"width": 1280, "height": 900})
+                c = new_context(browser, viewport={"width": 1280, "height": 900})
                 c.add_init_script("""
                     Object.defineProperty(navigator, 'webdriver', { get: () => false });
                     window.__TM_VISIT_TEST__ = true;
@@ -229,11 +263,11 @@ def main():
             passed.append("visit beacon: one per session, minimal payload, GPC respected")
 
             # No JavaScript and reduced motion: content stays visible
-            nojs = browser.new_context(java_script_enabled=False)
+            nojs = new_context(browser, java_script_enabled=False)
             pg = nojs.new_page(); pg.goto(base + "/", wait_until="load")
             check(float(pg.locator(".rv").first.evaluate("e => getComputedStyle(e).opacity")) > 0.95, "content hidden without JS")
             nojs.close()
-            rm = browser.new_context(reduced_motion="reduce")
+            rm = new_context(browser, reduced_motion="reduce")
             pg = rm.new_page(); pg.goto(base + "/work", wait_until="load")
             check(float(pg.locator(".rv").first.evaluate("e => getComputedStyle(e).opacity")) > 0.95, "content hidden with reduced motion")
             rm.close()
@@ -241,8 +275,9 @@ def main():
 
             browser.close()
     finally:
-        server.shutdown()
-        server.server_close()
+        if server:
+            server.shutdown()
+            server.server_close()
     for line in passed:
         print("PASS:", line)
 
