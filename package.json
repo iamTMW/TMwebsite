@@ -1,0 +1,21 @@
+{
+  "name": "tahamohyuddin-portfolio",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Personal portfolio for Taha Mohyuddin: static site plus one serverless endpoint.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/",
+    "check": "node --check src/assets/app.js && node --check src/assets/theme.js && node --check api/visit.js && npm run build && python3 scripts/verify_site.py && npm test",
+    "preview": "npm run build && python3 scripts/preview.py",
+    "smoke": "npm run build && python3 scripts/browser_smoke.py"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.35.0",
+    "resend": "^6.1.0"
+  }
+}

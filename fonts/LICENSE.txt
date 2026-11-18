@@ -1,0 +1,4 @@
+Fraunces and Inter Tight are licensed under the SIL Open Font License 1.1.
+https://openfontlicense.org
+Fraunces: Copyright 2018 The Fraunces Project Authors
+Inter Tight: Copyright 2022 The Inter Project Authors

@@ -1,0 +1,64 @@
+<svg class="pipeline" viewBox="0 0 560 464" role="img" aria-labelledby="pl-title pl-desc">
+  <title id="pl-title">How OpsRelay handles an incident</title>
+  <desc id="pl-desc">An uptime monitor detects a failing probe and opens an incident with an evidence hand-off. A Python repair agent reproduces the failure, diagnoses it from quoted evidence, proposes up to three minimal patches and verifies them against the failing tests and the full test suite. Workflow state and memory live in MongoDB Atlas. A passing fix becomes a draft pull request on GitHub, and a person reviews and merges it. The agent never merges.</desc>
+  <defs>
+    <marker id="pl-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+
+  <rect class="node" x="20" y="16" width="230" height="64" rx="12"/>
+  <text class="k" x="36" y="37">DETECT</text>
+  <text class="t" x="36" y="56">Uptime monitor</text>
+  <text class="s" x="36" y="71">website, health and functional probes</text>
+
+  <rect class="node" x="310" y="16" width="230" height="64" rx="12"/>
+  <text class="k" x="326" y="37">TRIAGE</text>
+  <text class="t" x="326" y="56">Incident opened</text>
+  <text class="s" x="326" y="71">evidence hand-off for the agent</text>
+
+  <path class="edge edge-accent" d="M250 48H306" marker-end="url(#pl-ah)"/>
+  <path class="edge edge-accent" d="M425 80V114" marker-end="url(#pl-ah)"/>
+
+  <rect class="node node-accent" x="20" y="118" width="520" height="142" rx="14"/>
+  <text class="k" x="36" y="140">REPAIR AGENT (PYTHON)</text>
+
+  <rect class="node" x="30" y="152" width="110" height="94" rx="10"/>
+  <text class="t" x="42" y="180">Reproduce</text>
+  <text class="s" x="42" y="199">rerun failing</text>
+  <text class="s" x="42" y="213">tests first</text>
+
+  <rect class="node" x="160" y="152" width="110" height="94" rx="10"/>
+  <text class="t" x="172" y="180">Diagnose</text>
+  <text class="s" x="172" y="199">quote evidence</text>
+  <text class="s" x="172" y="213">from logs, code</text>
+
+  <rect class="node" x="290" y="152" width="110" height="94" rx="10"/>
+  <text class="t" x="302" y="180">Patch</text>
+  <text class="s" x="302" y="199">up to three</text>
+  <text class="s" x="302" y="213">minimal fixes</text>
+
+  <rect class="node" x="420" y="152" width="110" height="94" rx="10"/>
+  <text class="t" x="432" y="180">Verify</text>
+  <text class="s" x="432" y="199">failing tests and</text>
+  <text class="s" x="432" y="213">the full suite</text>
+
+  <path class="edge edge-accent" d="M140 199H156" marker-end="url(#pl-ah)"/>
+  <path class="edge edge-accent" d="M270 199H286" marker-end="url(#pl-ah)"/>
+  <path class="edge edge-accent" d="M400 199H416" marker-end="url(#pl-ah)"/>
+
+  <path class="edge edge-dash" d="M135 260V298"/>
+  <rect class="node" x="20" y="298" width="230" height="64" rx="12"/>
+  <text class="k" x="36" y="319">STATE AND MEMORY</text>
+  <text class="t" x="36" y="338">MongoDB Atlas</text>
+  <text class="s" x="36" y="353">incidents, workflow steps, memories</text>
+
+  <path class="edge edge-accent" d="M425 260V294" marker-end="url(#pl-ah)"/>
+  <rect class="node" x="310" y="298" width="230" height="64" rx="12"/>
+  <text class="k" x="326" y="319">DELIVER</text>
+  <text class="t" x="326" y="338">Draft pull request</text>
+  <text class="s" x="326" y="353">opened on GitHub only if tests pass</text>
+
+  <path class="edge edge-dash" d="M425 362V392" marker-end="url(#pl-ah)"/>
+  <rect class="node node-ok" x="310" y="396" width="230" height="56" rx="12"/>
+  <text class="t" x="326" y="420">Human review and merge</text>
+  <text class="s" x="326" y="437">the agent never merges on its own</text>
+</svg>

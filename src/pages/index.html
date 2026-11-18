@@ -1,0 +1,270 @@
+<!--page {
+  "title": "Taha Mohyuddin | Software engineering, applied AI and operations",
+  "description": "Fourth-year Computer Science student at the University of Guelph (2027) and Assistant Department Manager at Loblaw. I build full-stack and AI-assisted software, including OpsRelay, an incident-response system with human-reviewed fixes.",
+  "path": "/",
+  "nav": "home",
+  "jsonld": {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Taha Mohyuddin",
+    "url": "https://www.tahamohyuddin.com/",
+    "jobTitle": "Computer Science student and Assistant Department Manager",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Guelph" },
+    "worksFor": { "@type": "Organization", "name": "Loblaw Companies Limited" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Milton", "addressRegion": "ON", "addressCountry": "CA" },
+    "sameAs": ["https://github.com/iamTMW", "https://www.linkedin.com/in/taha-mohyuddin-1795a522a"]
+  }
+}-->
+<main id="main">
+
+  <!-- ===== Hero: who I am, what I build ===== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="status seq"><span class="dot" aria-hidden="true"></span> Open to 2027 software, AI and product roles</p>
+        <h1 class="seq seq-2">
+          <span class="given">Taha</span>
+          <span class="family">Mohyuddin</span>
+        </h1>
+        <p class="hero-tagline seq seq-3">I build software that has to hold up in the real world, and I run operations where it has to.</p>
+        <p class="lede hero-lede seq seq-4">
+          I&rsquo;m a fourth-year Computer Science student at the University of Guelph, graduating in 2027.
+          I work across full-stack apps, AI-assisted tooling and analytics. I&rsquo;m also an Assistant
+          Department Manager at Loblaw, where I lead 20+ associates and work inside SAP and BOSS every day.
+        </p>
+        <div class="btn-row hero-cta seq seq-5">
+          <a class="btn btn-solid" href="/work">See my work</a>
+          <a class="btn btn-ghost" href="/work/opsrelay">Read the OpsRelay case study</a>
+        </div>
+        <ul class="hero-facts seq seq-5" aria-label="Quick facts">
+          <li>B.Comp. Computer Science, Guelph (2027)</li>
+          <li>Milton, Ontario</li>
+          <li>Open to relocation and remote</li>
+        </ul>
+      </div>
+      <figure class="portrait seq seq-3">
+        <img src="/images/opt/taha-portrait-800.webp"
+             srcset="/images/opt/taha-portrait-480.webp 480w, /images/opt/taha-portrait-800.webp 800w"
+             sizes="(max-width: 860px) 340px, 380px"
+             width="800" height="1000" alt="Taha Mohyuddin in a dark suit" fetchpriority="high">
+        <figcaption><span class="dot" aria-hidden="true"></span> Assistant Department Manager, Loblaw</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Proof: what I've done ===== -->
+  <section class="section-tight" aria-labelledby="proof-title">
+    <div class="wrap">
+      <h2 id="proof-title" class="sr-only">At a glance</h2>
+      <div class="proof rv">
+        <div><strong>20<small>+</small></strong><span>Associates led as an Assistant Department Manager</span></div>
+        <div><strong>3.7<small>/4.0</small></strong><span>GPA, Dean&rsquo;s Honours List</span></div>
+        <div><strong>8</strong><span>Scrum sprints shipping a team analytics platform</span></div>
+        <div><strong>2027</strong><span>Graduating with a B.Comp. in Computer Science</span></div>
+      </div>
+      <div class="logos rv" aria-label="Where I have worked and studied">
+        <span class="logos-label">Worked and studied with</span>
+        <img src="/images/opt/logo-loblaw.webp" alt="Loblaw Companies" width="96" height="96" loading="lazy">
+        <img src="/images/opt/logo-guelph.webp" alt="University of Guelph" width="96" height="96" loading="lazy">
+        <img src="/images/opt/logo-ies.webp" alt="Innovative Engineering Services" width="132" height="96" loading="lazy">
+        <img src="/images/opt/logo-medheave.webp" alt="Medheave" width="96" height="96" loading="lazy">
+        <img src="/images/opt/logo-codeninjas.webp" alt="Code Ninjas" width="174" height="96" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Featured: OpsRelay ===== -->
+  <section class="section" aria-labelledby="featured-title">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div>
+          <p class="eyebrow">Latest project</p>
+          <h2 id="featured-title">Featured work</h2>
+        </div>
+        <p>A team hackathon build from November 2026. I built the demo apps it protects and the first version of its monitor.</p>
+      </div>
+
+      <article class="feature rv">
+        <div class="feature-body">
+          <div class="badge-row">
+            <span class="badge badge-accent">Hackathon team project</span>
+            <span class="badge">Next.js · FastAPI · Python · MongoDB Atlas</span>
+          </div>
+          <h3>OpsRelay <span>AI-assisted incident response, with a human in charge of every fix</span></h3>
+          <p>
+            OpsRelay watches running apps and, when one breaks, sends an agent to investigate.
+            The agent reproduces the failure, works out what went wrong from the real logs and code,
+            tests candidate fixes, and opens a pull request for a person to review. It never merges on its own.
+          </p>
+          <ul class="feature-points">
+            <li>Functional probes catch broken checkouts and messages, not just pages that return 200.</li>
+            <li>Every proposed fix has to pass the failing tests and the full suite before a PR exists.</li>
+            <li>I built NovaMart, NovaConnect and the first uptime monitor and status dashboard.</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn btn-solid" href="/work/opsrelay">Read the case study</a>
+            <a class="btn btn-ghost" href="https://github.com/faizm10/opsrelay-agent" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="feature-media">
+          <!--include:pipeline-->
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== More selected work ===== -->
+  <section class="section" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2 id="work-title">More things I&rsquo;ve built</h2>
+        </div>
+        <p><a class="arrow-link" href="/work">All projects</a></p>
+      </div>
+
+      <div class="proj-grid">
+        <article class="proj rv">
+          <div class="proj-media">
+            <div class="phones">
+              <img src="/images/opt/simply-home.webp" alt="Simply home screen showing monthly spending and recent receipts" width="780" height="1688" loading="lazy">
+              <img src="/images/opt/simply-insights.webp" alt="Simply spending insights screen with spending by category" width="780" height="1688" loading="lazy">
+              <img src="/images/opt/simply-add.webp" alt="Simply add-receipt screen with photo, gallery and manual entry options" width="780" height="1688" loading="lazy">
+            </div>
+            <span class="media-label">Screens with demo data</span>
+          </div>
+          <div class="proj-body">
+            <p class="proj-kicker">Mobile · Flutter · In progress</p>
+            <h3><a href="/work#simply">Simply</a></h3>
+            <p>A receipt manager for scanning or typing in receipts, organising purchases, seeing where money goes, and tracking return and warranty dates.</p>
+            <p class="proj-role"><b>My part:</b> sign-in and sign-up flows with validation, the shared receipt model, and the app&rsquo;s theme.</p>
+            <ul class="tags"><li>Flutter</li><li>Dart</li><li>Team of 5</li></ul>
+          </div>
+        </article>
+
+        <article class="proj rv">
+          <div class="proj-media">
+            <div class="cover cover-chart" aria-hidden="true">
+              <div class="bars">
+                <span style="height:46%"></span><span style="height:62%"></span><span style="height:54%"></span>
+                <span style="height:78%"></span><span style="height:70%"></span><span style="height:92%"></span>
+                <span style="height:84%"></span>
+              </div>
+              <div class="cover-legend"><span>Revenue</span><span>Products</span><span>Customers</span></div>
+            </div>
+            <span class="media-label">Illustration</span>
+          </div>
+          <div class="proj-body">
+            <p class="proj-kicker">Full-stack · Analytics · CI/CD</p>
+            <h3><a href="/work#ecommerce">E-Commerce Analytics Platform</a></h3>
+            <p>A team-built dashboard for revenue trends, product performance and customer spending, using a React and TypeScript front end on a Spring Boot REST API over MariaDB.</p>
+            <p class="proj-role"><b>My part:</b> GitLab CI/CD lint and test pipelines, merge validation, and Scrum delivery.</p>
+            <ul class="tags"><li>React</li><li>Spring Boot</li><li>MariaDB</li><li>Docker</li></ul>
+          </div>
+        </article>
+
+        <article class="proj rv">
+          <div class="proj-media">
+            <div class="browser"><img src="/images/opt/edupro-home.webp" alt="EduPro landing page: adaptive learning, progress tracking and role-based lessons" width="1440" height="900" loading="lazy"></div>
+            <span class="media-label">Live demo screenshot</span>
+          </div>
+          <div class="proj-body">
+            <p class="proj-kicker">Web · AI · Team prototype</p>
+            <h3><a href="/work#edupro">EduPro</a></h3>
+            <p>An adaptive tutoring prototype for grade 2 math, with guided hints and separate student, teacher and parent views.</p>
+            <p class="proj-role"><b>My part:</b> user flows, use cases and wireframes that shaped the role-based interface.</p>
+            <ul class="tags"><li>Next.js</li><li>Flask</li><li>Python</li><li>Team of 6</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why hire me ===== -->
+  <section class="section" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div>
+          <p class="eyebrow">Why work with me</p>
+          <h2 id="why-title">Engineering, with operations experience behind it</h2>
+        </div>
+        <p>Most students can describe a system. I&rsquo;ve also been the person on the floor when one gives the wrong answer.</p>
+      </div>
+      <div class="grid g-3 rv">
+        <div class="card feat">
+          <span class="feat-num">01</span>
+          <h3>I ship across the stack</h3>
+          <p>Next.js and React front ends, FastAPI, Flask and Spring Boot services, SQL and MongoDB, and the tests and CI that keep them honest.</p>
+        </div>
+        <div class="card feat">
+          <span class="feat-num">02</span>
+          <h3>I&rsquo;ve run real operations</h3>
+          <p>I lead 20+ associates, reconcile cycle counts against SAP and BOSS, and fix the records that replenishment and reporting depend on.</p>
+        </div>
+        <div class="card feat">
+          <span class="feat-num">03</span>
+          <h3>I use AI carefully</h3>
+          <p>OpsRelay&rsquo;s fixes only become pull requests once the tests pass, and a person merges them. I care about AI that can show its evidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Now ===== -->
+  <section class="section" aria-labelledby="now-title">
+    <div class="wrap">
+      <div class="section-head rv">
+        <div>
+          <p class="eyebrow">Now</p>
+          <h2 id="now-title">Where things stand</h2>
+        </div>
+      </div>
+      <div class="ledger rv">
+        <div class="ledger-row">
+          <div class="ledger-key">Leading</div>
+          <div class="ledger-val">Assistant Department Manager, Grocery, Loblaw (Real Canadian Superstore)
+            <span>A 20+ associate department: staffing, deliveries, replenishment, and inventory accuracy in SAP and BOSS.</span>
+          </div>
+          <div class="ledger-when">Apr 2025 &rarr; now</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">Studying</div>
+          <div class="ledger-val">Bachelor of Computing, Computer Science, University of Guelph
+            <span>Fourth year, graduating 2027. GPA 3.7/4.0, Dean&rsquo;s Honours List.</span>
+          </div>
+          <div class="ledger-when">2023 &rarr; 2027</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">Researching</div>
+          <div class="ledger-val">Undergraduate research, longitudinal student burnout
+            <span>Designing a repeatable survey that tracks burnout, workload, stress and support across university terms.</span>
+          </div>
+          <div class="ledger-when">Sep 2026 &rarr; now</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-key">Building</div>
+          <div class="ledger-val">Simply, a Flutter receipt manager, with a five-person team
+            <span>Following OpsRelay, the hackathon project featured above.</span>
+          </div>
+          <div class="ledger-when">Fall 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="rv">Building something that has to work?</h2>
+      <p class="lede rv">I&rsquo;m looking for 2027 roles in software engineering, applied AI, product and corporate technology. I&rsquo;d like to hear what your team is working on.</p>
+      <div class="btn-row rv">
+        <a class="btn btn-solid" href="/contact">Get in touch</a>
+        <a class="btn btn-ghost" href="/resume" target="_blank" rel="noopener">Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,9 @@
+# Keep source-only and review material out of the deployment upload.
+test-screenshots
+tests
+.github
+*.md
+images/videotaha2.mov
+images/Welcome_to_the_world_of_Taha_Mohyuddin..mp4
+images/chatbotdemo.mp4
+images/*.HEIC
