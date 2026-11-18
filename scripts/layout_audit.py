@@ -95,7 +95,7 @@ AUDIT_JS = r"""
   // 5. page-level overflow and broken images
   const over = document.documentElement.scrollWidth - window.innerWidth;
   if (over > 1) issues.push(`page scrolls horizontally by ${over}px`);
-  document.querySelectorAll('img').forEach((img) => { if (img.complete && img.naturalWidth === 0) issues.push(`broken image ${img.getAttribute('src')}`); });
+  document.querySelectorAll('img').forEach((img) => { if (img.getAttribute('src') && img.complete && img.naturalWidth === 0) issues.push(`broken image ${img.getAttribute('src')}`); });
   return [...new Set(issues)];
 }
 """

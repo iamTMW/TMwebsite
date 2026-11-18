@@ -33,6 +33,18 @@ JOBS = {
     "cricket-2": ("cric2.jpg", 640, 640, 74),
     "cricket-3": ("cric3.jpg", 640, 640, 74),
     "cricket-4": ("cric4.jpg", 640, 640, 74),
+    # hackathon photographs (originals kept untouched in images/)
+    "hack-team-800": ("MongodbTeam.JPG", 800, 800, 78),
+    "hack-team-1600": ("MongodbTeam.JPG", 1600, 1600, 80),
+    "hack-stage-800": ("MongodbTM2.JPG", 800, 800, 78),
+    "hack-stage-1600": ("MongodbTM2.JPG", 1600, 1600, 80),
+    "hack-stage-side-800": ("MongodbTM.jpg", 800, 800, 78),
+    "hack-stage-side-1600": ("MongodbTM.jpg", 1600, 1600, 80),
+    # full-size versions for the lightbox
+    "cricket-1-full": ("cric1.jpg", 1400, 1400, 78),
+    "cricket-2-full": ("cric2.jpg", 1400, 1400, 78),
+    "cricket-3-full": ("cric3.jpg", 1400, 1400, 78),
+    "cricket-4-full": ("cric4.jpg", 1400, 1400, 78),
 }
 # Optional sources that are not kept in images/ (screenshots captured during review).
 EXTRA_JOBS = {

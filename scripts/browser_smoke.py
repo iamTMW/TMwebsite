@@ -100,7 +100,7 @@ def main():
                     overflow = page.evaluate("document.documentElement.scrollWidth - window.innerWidth")
                     check(overflow <= 1, f"{label} {route}: {overflow}px horizontal overflow")
                     broken = page.eval_on_selector_all(
-                        "img", "els => els.filter(i => i.complete && i.naturalWidth === 0).map(i => i.src)")
+                        "img", "els => els.filter(i => i.getAttribute('src') && i.complete && i.naturalWidth === 0).map(i => i.src)")
                     check(not broken, f"{label} {route}: broken images {broken}")
                     unlabeled = page.evaluate("""() => [...document.querySelectorAll('input,select,textarea')]
                         .filter(el => el.type !== 'hidden' && !el.closest('[aria-hidden=true]'))
@@ -262,6 +262,81 @@ def main():
             check(len(beacons) == 2, "beacon sent despite Global Privacy Control")
             c3.close()
             passed.append("visit beacon: one per session, minimal payload, GPC respected")
+
+            # ---- v3 interactions ----
+            ctx = new_context(browser, viewport={"width": 1280, "height": 900})
+            with_prod_headers(ctx, base)
+            pg = ctx.new_page()
+            pg.add_init_script("""
+                window.__shifts = 0;
+                new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__shifts += e.value; })
+                  .observe({ type: 'layout-shift', buffered: true });
+            """)
+            pg.goto(base + "/", wait_until="load")
+            first = pg.locator(".typer-text").inner_text()
+            pg.wait_for_timeout(1200)   # let the one-off entrance animation finish
+            lede_top = pg.locator(".hero .lede").bounding_box()["y"]
+            texts, tops = set(), set()
+            for _ in range(14):
+                pg.wait_for_timeout(500)
+                texts.add(pg.locator(".typer-text").inner_text())
+                tops.add(round(pg.locator(".hero .lede").bounding_box()["y"]))
+            check(len(texts) > 2, f"typewriter did not animate: {texts}")
+            check(tops == {round(lede_top)}, f"typewriter shifted the layout: lede tops {tops}")
+            cls = pg.evaluate("window.__shifts")
+            check(cls < 0.01, f"cumulative layout shift too high: {cls}")
+            check("Building software" in pg.locator(".typer .sr-only").inner_text(), "missing static screen-reader text")
+            check(first.startswith("Building software"), "first phrase not server-rendered")
+
+            # theme choice persists across pages
+            pg.locator(".topbar [data-theme-toggle]").click()
+            chosen = pg.evaluate("document.documentElement.dataset.theme")
+            pg.goto(base + "/work", wait_until="load")
+            check(pg.evaluate("document.documentElement.dataset.theme") == chosen, "theme not kept across pages")
+            pg.evaluate("localStorage.removeItem('theme')")
+
+            # project filter
+            pg.goto(base + "/work", wait_until="load")
+            check(pg.locator("[data-filters]").is_visible(), "filter bar not shown")
+            pg.locator('[data-filter="mobile"]').click()
+            visible_ids = pg.eval_on_selector_all("[data-tags]", "els => els.filter(e => e.offsetParent).map(e => e.id)")
+            check(visible_ids == ["simply"], f"mobile filter shows {visible_ids}")
+            check(pg.locator("[data-filter-status]").inner_text() == "1 project", "filter status wrong")
+            check(not pg.locator('[aria-labelledby="earlier-title"]').is_visible(), "empty section not hidden")
+            pg.locator('[data-filter="ai"]').click()
+            ai_ids = pg.eval_on_selector_all("[data-tags]", "els => els.filter(e => e.offsetParent).map(e => e.id)")
+            check(set(ai_ids) == {"opsrelay", "edupro", "chatbot"}, f"AI filter shows {ai_ids}")
+            pg.locator('[data-filter="all"]').click()
+            check(pg.eval_on_selector_all("[data-tags]", "els => els.filter(e => e.offsetParent).length") == 8, "All did not restore")
+
+            # lightbox: open, full-size image, arrows, Escape, focus return
+            pg.goto(base + "/work/opsrelay", wait_until="load")
+            opener = pg.locator('a[data-lightbox="hackathon"]').first
+            opener.scroll_into_view_if_needed()
+            opener.click()
+            dlg = pg.locator("dialog.lightbox")
+            check(dlg.evaluate("d => d.open"), "lightbox did not open")
+            pg.wait_for_function("() => { const i = document.querySelector('dialog.lightbox img'); return i.complete && i.naturalWidth > 0; }")
+            check(pg.evaluate("document.querySelector('dialog.lightbox img').naturalWidth") >= 1600, "lightbox not showing full-size image")
+            check(pg.locator(".lb-count").inner_text() == "1 / 3", "lightbox counter wrong")
+            pg.keyboard.press("ArrowRight")
+            check(pg.locator(".lb-count").inner_text() == "2 / 3", "ArrowRight did not advance")
+            pg.keyboard.press("Escape")
+            check(not dlg.evaluate("d => d.open"), "Escape did not close lightbox")
+            check(pg.evaluate("document.activeElement.getAttribute('data-lightbox')") == "hackathon", "focus not returned to photo")
+
+            # Loblaw timeline lights up while scrolling
+            pg.goto(base + "/experience", wait_until="load")
+            pg.mouse.wheel(0, 900); pg.wait_for_timeout(400)
+            check(pg.locator(".ladder .role.lit").count() >= 2, "career timeline did not respond to scroll")
+            ctx.close()
+
+            rmc = new_context(browser, viewport={"width": 390, "height": 844}, reduced_motion="reduce")
+            with_prod_headers(rmc, base)
+            pg = rmc.new_page(); pg.goto(base + "/", wait_until="load"); pg.wait_for_timeout(4000)
+            check(pg.locator(".typer-text").inner_text() == "Building software that solves real problems.", "typewriter animates despite reduced motion")
+            rmc.close()
+            passed.append("typewriter (animates, no layout shift, static for reduced motion), theme across pages, filter, lightbox keyboard, career timeline")
 
             # No JavaScript and reduced motion: content stays visible
             nojs = new_context(browser, java_script_enabled=False)

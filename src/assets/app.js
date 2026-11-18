@@ -195,6 +195,163 @@
     });
   }
 
+  /* ---- hero typewriter ----
+     The first phrase is already in the HTML, so nothing waits on this script.
+     A hidden sizer holds whichever phrase wraps tallest, so the layout never shifts.
+     Screen readers get a static sentence; reduced motion keeps the first phrase still. */
+  var typer = document.querySelector('[data-typer]');
+  if (typer) {
+    var phrases = [];
+    try { phrases = JSON.parse(typer.getAttribute('data-typer')); } catch (e) { phrases = []; }
+    var textEl = typer.querySelector('.typer-text');
+    var sizer = typer.querySelector('.typer-sizer');
+    var fitSizer = function () {
+      var tallest = phrases[0] || '', best = 0;
+      phrases.forEach(function (p) {
+        sizer.textContent = p;
+        var h = sizer.getBoundingClientRect().height;
+        if (h > best) { best = h; tallest = p; }
+      });
+      sizer.textContent = tallest;
+    };
+    if (phrases.length > 1 && textEl && sizer) {
+      fitSizer();
+      var resizeTimer;
+      window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(fitSizer, 150); });
+      if (reduce) {
+        typer.classList.add('is-idle');
+      } else {
+        var idx = 0, chars = phrases[0].length, deleting = true, timer = null, running = true;
+        var step = function () {
+          if (!running) { timer = null; return; }
+          var phrase = phrases[idx];
+          if (deleting) {
+            chars--;
+            textEl.textContent = phrase.slice(0, Math.max(chars, 0));
+            if (chars <= 0) { deleting = false; idx = (idx + 1) % phrases.length; typer.classList.remove('is-idle'); timer = setTimeout(step, 420); return; }
+            timer = setTimeout(step, 22);
+          } else {
+            chars++;
+            textEl.textContent = phrase.slice(0, chars);
+            if (chars >= phrase.length) { deleting = true; typer.classList.add('is-idle'); timer = setTimeout(step, 2600); return; }
+            timer = setTimeout(step, 38 + Math.random() * 28);
+          }
+        };
+        var start = function () { if (!timer && running) timer = setTimeout(step, 2600); };
+        typer.classList.add('is-idle');
+        // Pause when the hero is off screen or the tab is hidden: no wasted work.
+        var visible = true, tabVisible = !document.hidden;
+        var sync = function () {
+          var shouldRun = visible && tabVisible;
+          if (shouldRun && !running) { running = true; start(); }
+          if (!shouldRun) { running = false; }
+        };
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (en) { visible = en[0].isIntersecting; sync(); }).observe(typer);
+        }
+        document.addEventListener('visibilitychange', function () { tabVisible = !document.hidden; sync(); });
+        start();
+      }
+    }
+  }
+
+  /* ---- lightbox: links with data-lightbox open a native <dialog>.
+     Without JavaScript the link simply opens the full-size image. ---- */
+  var lbLinks = Array.prototype.slice.call(document.querySelectorAll('a[data-lightbox]'));
+  if (lbLinks.length && typeof HTMLDialogElement === 'function') {
+    var dlg = document.createElement('dialog');
+    dlg.className = 'lightbox';
+    dlg.setAttribute('aria-label', 'Image viewer');
+    dlg.innerHTML = '<figure><img alt=""><figcaption></figcaption></figure>' +
+      '<div class="lb-bar"><button type="button" class="lb-btn" data-lb="prev" aria-label="Previous image">&#8592;</button>' +
+      '<span class="lb-count" aria-live="polite"></span>' +
+      '<button type="button" class="lb-btn" data-lb="next" aria-label="Next image">&#8594;</button>' +
+      '<button type="button" class="lb-btn" data-lb="close">Close</button></div>';
+    document.body.appendChild(dlg);
+    var lbImg = dlg.querySelector('img'), lbCap = dlg.querySelector('figcaption'), lbCount = dlg.querySelector('.lb-count');
+    var group = [], pos = 0, opener = null;
+    var show = function (i) {
+      pos = (i + group.length) % group.length;
+      var a = group[pos], thumb = a.querySelector('img');
+      lbImg.src = a.getAttribute('href');
+      lbImg.alt = thumb ? thumb.alt : '';
+      lbCap.textContent = a.getAttribute('data-caption') || '';
+      lbCount.textContent = group.length > 1 ? (pos + 1) + ' / ' + group.length : '';
+      dlg.querySelectorAll('[data-lb="prev"],[data-lb="next"]').forEach(function (b) { b.hidden = group.length < 2; });
+    };
+    lbLinks.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;  // let "open in new tab" work
+        e.preventDefault();
+        opener = a;
+        var name = a.getAttribute('data-lightbox');
+        group = lbLinks.filter(function (x) { return x.getAttribute('data-lightbox') === name; });
+        show(group.indexOf(a));
+        dlg.showModal();
+        dlg.querySelector('[data-lb="close"]').focus();
+      });
+    });
+    dlg.addEventListener('click', function (e) {
+      var act = e.target.closest('[data-lb]');
+      if (act) {
+        var k = act.getAttribute('data-lb');
+        if (k === 'close') dlg.close(); else show(pos + (k === 'next' ? 1 : -1));
+      } else if (e.target === dlg) {
+        dlg.close();   // click on the backdrop
+      }
+    });
+    dlg.addEventListener('keydown', function (e) {
+      if (group.length < 2) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(pos + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(pos - 1); }
+    });
+    dlg.addEventListener('close', function () { lbImg.removeAttribute('src'); if (opener) opener.focus(); });
+  }
+
+  /* ---- project filter (Work page) ---- */
+  var filterBar = document.querySelector('[data-filters]');
+  if (filterBar) {
+    filterBar.hidden = false;
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-tags]'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('[data-filter-section]'));
+    var statusEl = filterBar.querySelector('[data-filter-status]');
+    filterBar.addEventListener('click', function (e) {
+      var chip = e.target.closest('[data-filter]');
+      if (!chip) return;
+      var f = chip.getAttribute('data-filter');
+      filterBar.querySelectorAll('[data-filter]').forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      var shown = 0;
+      items.forEach(function (it) {
+        var match = f === 'all' || it.getAttribute('data-tags').split(' ').indexOf(f) > -1;
+        it.classList.toggle('is-filtered-out', !match);
+        if (match) { shown++; it.classList.add('in'); }
+      });
+      sections.forEach(function (s) { s.hidden = !s.querySelector('[data-tags]:not(.is-filtered-out)'); });
+      statusEl.textContent = f === 'all' ? '' : shown + (shown === 1 ? ' project' : ' projects');
+    });
+  }
+
+  /* ---- Loblaw progression: the timeline line fills as it scrolls through view ---- */
+  var ladders = document.querySelectorAll('.ladder');
+  if (ladders.length && !reduce) {
+    var paint = function () {
+      var vh = window.innerHeight;
+      ladders.forEach(function (l) {
+        var r = l.getBoundingClientRect();
+        var p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / Math.max(r.height, 1)));
+        l.style.setProperty('--progress', p.toFixed(3));
+        l.querySelectorAll('.role').forEach(function (role) {
+          role.classList.toggle('lit', role.getBoundingClientRect().top < vh * 0.75);
+        });
+      });
+    };
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(function () { paint(); ticking = false; }); }
+    }, { passive: true });
+    paint();
+  }
+
   /* ---- year stamp ---- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = new Date().getFullYear();

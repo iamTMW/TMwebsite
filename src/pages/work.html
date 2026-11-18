@@ -17,10 +17,22 @@
     </div>
   </section>
 
-  <section class="section" style="padding-top:0" aria-labelledby="featured-h">
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="Filter projects" data-filters hidden>
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI</button>
+      <button class="chip" type="button" data-filter="web" aria-pressed="false">Web</button>
+      <button class="chip" type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
+      <button class="chip" type="button" data-filter="data" aria-pressed="false">Data</button>
+      <button class="chip" type="button" data-filter="systems" aria-pressed="false">Systems</button>
+      <span class="filter-status" role="status" aria-live="polite" data-filter-status></span>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0" aria-labelledby="featured-h" data-filter-section>
     <div class="wrap">
       <h2 id="featured-h" class="sr-only">Featured project</h2>
-      <article class="feature rv" id="opsrelay">
+      <article class="feature rv" id="opsrelay" data-tags="ai web systems">
         <div class="feature-body">
           <p class="kicker">Featured · Hackathon team project · November 2026</p>
           <h3>OpsRelay</h3>
@@ -52,17 +64,18 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="recent-title">
+  <section class="section" aria-labelledby="recent-title" data-filter-section>
     <div class="wrap">
       <div class="section-head rv"><h2 id="recent-title">Recent projects</h2></div>
       <div class="rows">
 
-        <article class="row-p rv" id="simply">
+        <article class="row-p rv" id="simply" data-tags="mobile">
           <div class="media">
             <div class="phones">
-              <img src="/images/opt/simply-login.webp" alt="Simply sign-in screen" width="780" height="1688" loading="lazy">
-              <img src="/images/opt/simply-home.webp" alt="Simply home screen with monthly spending, recent receipts and upcoming returns" width="780" height="1688" loading="lazy">
-              <img src="/images/opt/simply-insights.webp" alt="Simply spending insights by category" width="780" height="1688" loading="lazy">
+              <a href="/images/opt/simply-login.webp" data-lightbox="simply" data-caption="Simply: sign-in screen (my work)"><img src="/images/opt/simply-login.webp" alt="Simply sign-in screen" width="780" height="1688" loading="lazy"></a>
+              <a href="/images/opt/simply-home.webp" data-lightbox="simply" data-caption="Simply: home, with demo data"><img src="/images/opt/simply-home.webp" alt="Simply home screen with monthly spending, recent receipts and upcoming returns" width="780" height="1688" loading="lazy"></a>
+              <a href="/images/opt/simply-insights.webp" data-lightbox="simply" data-caption="Simply: spending insights, with demo data"><img src="/images/opt/simply-insights.webp" alt="Simply spending insights by category" width="780" height="1688" loading="lazy"></a>
+              <a href="/images/opt/simply-add.webp" data-lightbox="simply" data-caption="Simply: add a receipt by camera, gallery or manual entry" class="sr-only">View the add-receipt screen</a>
             </div>
           </div>
           <div class="body">
@@ -91,7 +104,7 @@
           </div>
         </article>
 
-        <article class="row-p rv" id="ecommerce">
+        <article class="row-p rv" id="ecommerce" data-tags="web data">
           <div class="media">
             <div class="schema" aria-hidden="true">
               <div><b>React</b><small>TypeScript dashboard, Chart.js</small></div><i></i>
@@ -121,9 +134,9 @@
           </div>
         </article>
 
-        <article class="row-p rv" id="edupro">
+        <article class="row-p rv" id="edupro" data-tags="web ai">
           <div class="media">
-            <div class="browser"><img src="/images/opt/edupro-home.webp" alt="EduPro landing page" width="1440" height="900" loading="lazy"></div>
+            <a class="browser" href="/images/opt/edupro-home.webp" data-lightbox="edupro" data-caption="EduPro: live front-end demo"><img src="/images/opt/edupro-home.webp" alt="EduPro landing page" width="1440" height="900" loading="lazy"></a>
           </div>
           <div class="body">
             <div class="main"><p class="kicker">Web · AI · 2025</p>
@@ -152,35 +165,35 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="earlier-title">
+  <section class="section" aria-labelledby="earlier-title" data-filter-section>
     <div class="wrap">
       <div class="section-head rv">
         <h2 id="earlier-title">Earlier work</h2>
         <p>Coursework and personal projects where I learned parsing, persistence, roles and testing.</p>
       </div>
       <div class="more-list rv">
-        <div class="more-row" id="vcard">
+        <div class="more-row" id="vcard" data-tags="systems data">
           <div>
             <h3>vCard Manager</h3>
             <p>A C library that parses and validates vCard 4.0 files, a Python terminal UI that calls it, and MySQL for storing and querying contacts.</p>
           </div>
           <div class="links"><a class="ext" href="https://github.com/iamTMW/vCard-Manager" target="_blank" rel="noopener">GitHub </a></div>
         </div>
-        <div class="more-row" id="grades">
+        <div class="more-row" id="grades" data-tags="systems data">
           <div>
             <h3>Grade Manager Plus</h3>
             <p>A C# Windows Forms app with separate administrator and student views, a marks graph, and per-student averages.</p>
           </div>
           <div class="links"><a href="/grademan">Details</a><a class="ext" href="https://github.com/iamTMW/GradeManagerPlus" target="_blank" rel="noopener">GitHub </a></div>
         </div>
-        <div class="more-row" id="investing">
+        <div class="more-row" id="investing" data-tags="systems">
           <div>
             <h3>Investment portfolio manager</h3>
             <p>A Java Swing app for buying and selling stocks and mutual funds, searching holdings, calculating gains, and saving to file.</p>
           </div>
           <div class="links"><a class="ext" href="https://github.com/iamTMW/ePortfolio" target="_blank" rel="noopener">GitHub </a></div>
         </div>
-        <div class="more-row" id="chatbot">
+        <div class="more-row" id="chatbot" data-tags="ai web">
           <div>
             <h3>Hotel concierge chatbot</h3>
             <p>A Python, Flask and OpenAI API assistant that answers routine front-desk questions and hands unusual ones to staff.</p>
