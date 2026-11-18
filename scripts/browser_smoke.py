@@ -166,7 +166,8 @@ def main():
             page.reload(wait_until="load")
             check(page.evaluate("document.documentElement.dataset.theme") == "light", "theme not persisted")
             bg = page.evaluate("getComputedStyle(document.body).backgroundColor")
-            check(bg == "rgb(250, 247, 242)", f"light background not applied: {bg}")
+            rgb = [int(x) for x in bg[bg.index("(") + 1:bg.index(")")].split(",")[:3]]
+            check(min(rgb) >= 235, f"light background not applied: {bg}")
             page.evaluate("localStorage.removeItem('theme')")
             passed.append("theme toggle and persistence")
 

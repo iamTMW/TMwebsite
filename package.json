@@ -12,7 +12,8 @@
     "test": "node --test tests/",
     "check": "node --check src/assets/app.js && node --check src/assets/theme.js && node --check api/visit.js && npm run build && python3 scripts/verify_site.py && npm test",
     "preview": "npm run build && python3 scripts/preview.py",
-    "smoke": "npm run build && python3 scripts/browser_smoke.py"
+    "smoke": "npm run build && python3 scripts/browser_smoke.py",
+    "layout": "npm run build && python3 scripts/layout_audit.py"
   },
   "dependencies": {
     "@upstash/redis": "^1.35.0",

@@ -47,10 +47,15 @@ jobs:
       - name: Desktop, tablet and mobile browser tests (all external calls mocked)
         run: python scripts/browser_smoke.py
 
+      - name: Rendered layout audit (7 widths x light/dark, every route)
+        run: python scripts/layout_audit.py --shots test-screenshots/review
+
       - name: Save review screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: portfolio-review-screenshots
-          path: test-screenshots/*.png
+          path: |
+            test-screenshots/*.png
+            test-screenshots/review/*.png
           if-no-files-found: ignore

@@ -54,10 +54,29 @@ def convert(src: Path, name: str, w: int, h: int, q: int) -> None:
     print(f"{dest.relative_to(ROOT)}  {im.width}x{im.height}  {dest.stat().st_size // 1024} KB")
 
 
+# name: (source, crop height as a fraction of the image, aspect w/h, quality); anchored bottom-right
+CROP_JOBS = {
+    "about-portrait-crop": ("abouttaha.jpg", 0.62, 0.8, 80),
+}
+
+
+def crop_bottom_right(src: Path, name: str, frac: float, aspect: float, q: int) -> None:
+    im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
+    h = int(im.height * frac)
+    w = int(h * aspect)
+    im = im.crop((im.width - w, im.height - h, im.width, im.height))
+    im.thumbnail((720, 900), Image.LANCZOS)
+    dest = OUT / f"{name}.webp"
+    im.save(dest, "WEBP", quality=q, method=6)
+    print(f"{dest.relative_to(ROOT)}  {im.width}x{im.height}  {dest.stat().st_size // 1024} KB")
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for name, (src, w, h, q) in JOBS.items():
         convert(SRC / src, name, w, h, q)
+    for name, (src, frac, aspect, q) in CROP_JOBS.items():
+        crop_bottom_right(SRC / src, name, frac, aspect, q)
     if EXTRA:
         for name, (src, w, h, q) in EXTRA_JOBS.items():
             if (EXTRA / src).is_file():

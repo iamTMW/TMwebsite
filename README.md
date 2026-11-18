@@ -23,7 +23,8 @@ Requires Node 20+ and Python 3.
 npm ci
 npm run preview            # builds dist/ and serves it at http://127.0.0.1:8000 with Vercel-style routes
 npm run check              # syntax, build, static site checks, endpoint tests
-npm run smoke              # Playwright browser tests (needs: pip install playwright && playwright install chromium)
+npm run smoke              # Playwright behaviour tests (needs: pip install playwright && playwright install chromium)
+npm run layout             # rendered-layout audit: every route at 320-1920px in light and dark
 ```
 
 Edit files in `src/`, never in `dist/` (it's generated and git-ignored). To add a page, create
@@ -106,8 +107,8 @@ the page source (it's still shown on the page deliberately).
 
 ## Deployment checklist
 
-1. `npm ci && npm run check && npm run smoke`. Everything should pass.
-2. Review `test-screenshots/` (desktop, tablet, mobile; light and dark).
+1. `npm ci && npm run check && npm run smoke && npm run layout`. Everything should pass.
+2. Passing checks are not enough: look through `test-screenshots/review/` (every route, 7 widths, both themes).
 3. Push the branch and open a PR. Wait for the **Portfolio quality checks** workflow to pass.
 4. Open the Vercel **Preview** deployment and click through every page in both themes, on your phone too.
 5. In the preview, confirm the response headers (`curl -sI <preview-url>`) and that `/resume`,

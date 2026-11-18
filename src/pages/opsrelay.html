@@ -1,6 +1,6 @@
 <!--page {
   "title": "OpsRelay: AI-assisted incident response | Taha Mohyuddin",
-  "description": "Case study: OpsRelay monitors apps, investigates incidents with a Python repair agent, verifies fixes against the test suite and opens pull requests for human review. Built by a four-person hackathon team.",
+  "description": "Case study: OpsRelay monitors apps, investigates incidents with a Python repair agent, verifies fixes against the test suite and opens draft pull requests for human review. Built by a four-person hackathon team.",
   "path": "/work/opsrelay",
   "nav": "case",
   "ogType": "article",
@@ -8,211 +8,158 @@
 }-->
 <main id="main">
 
-  <section class="page-head cs-hero">
-    <div class="wrap">
-      <a class="back seq" href="/work">&#8592; All work</a>
-      <p class="eyebrow seq seq-2">Case study · Hackathon, November 2026</p>
-      <h1 class="seq seq-2">OpsRelay: AI-assisted incident response</h1>
+  <section class="page-head cs-head">
+    <div class="wrap cs-wrap">
+      <a class="back seq" href="/work">&#8592; All projects</a>
+      <p class="eyebrow seq seq-2">Case study · Hackathon team project · November 2026</p>
+      <h1 class="seq seq-2">OpsRelay</h1>
       <p class="lede seq seq-3">
-        Monitoring that checks whether an app actually works, plus an agent that investigates what broke,
-        proves a fix against the tests, and hands it to a person as a pull request.
+        AI-assisted incident response for web apps. It monitors what users actually do, investigates what
+        broke, proves a fix against the tests, and hands it to a person as a pull request.
       </p>
-      <div class="btn-row seq seq-4" style="margin-top:28px">
+      <div class="btn-row seq seq-4" style="margin-top:26px">
         <a class="btn btn-solid" href="https://github.com/faizm10/opsrelay-agent" target="_blank" rel="noopener">View on GitHub</a>
         <a class="btn btn-ghost" href="https://opsrelay-dashboard.vercel.app" target="_blank" rel="noopener">Live dashboard</a>
       </div>
-      <p class="note-line seq seq-4">The hosted dashboard requires an account. The repository README explains how to run the whole system locally.</p>
-
       <dl class="cs-meta seq seq-5">
-        <div><dt>My role</dt><dd>Built NovaMart, NovaConnect, and the first uptime monitor and dashboard</dd></div>
+        <div><dt>My role</dt><dd>Demo apps and the first uptime monitor</dd></div>
         <div><dt>Team</dt><dd>Four developers</dd></div>
-        <div><dt>Built with</dt><dd>Next.js, FastAPI, Python, MongoDB Atlas</dd></div>
-        <div><dt>Status</dt><dd>Hackathon prototype, open source (MIT)</dd></div>
+        <div><dt>Stack</dt><dd>Next.js, FastAPI, Python, MongoDB Atlas</dd></div>
+        <div><dt>Status</dt><dd>Prototype, open source (MIT)</dd></div>
       </dl>
+      <p class="muted small" style="margin-top:12px">The hosted dashboard requires an account. The README explains how to run everything locally.</p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <figure class="cs-figure rv" tabindex="0" aria-label="OpsRelay system diagram (scrollable on small screens)">
+  <section class="section" style="padding-top:clamp(8px,2vw,24px)">
+    <div class="wrap cs-wrap">
+      <figure class="cs-figure rv">
         <!--include:pipeline-->
-        <figcaption>System overview, drawn from the repository&rsquo;s architecture documentation.</figcaption>
+        <!--include:opsrelay-flow-->
+        <figcaption>How an incident moves through OpsRelay, drawn from the repository&rsquo;s architecture documentation.</figcaption>
       </figure>
     </div>
   </section>
 
   <section class="section">
-    <div class="wrap">
-      <div class="cs-section rv">
+    <div class="wrap cs-wrap">
+
+      <div class="cs-block rv">
         <h2>The problem</h2>
         <div class="prose">
           <p>
-            In an outage, noticing that something is wrong is usually the quick part. The slow part is working out
-            what actually failed, whether it&rsquo;s your code or something you depend on, and getting a safe fix
-            reviewed while people are waiting.
+            In an outage, noticing that something is wrong is usually the quick part. The slow part is working
+            out what actually failed, whether it&rsquo;s your code or something you depend on, and getting a safe
+            fix reviewed while people wait.
           </p>
           <p>
             Widely reported Microsoft 365 and Outlook disruptions are a reminder that even mature platforms
-            spend a lot of an incident on diagnosis, verification and communication. We wanted to see how much of
-            that loop an agent could take on without anyone giving up control of what ships.
+            spend much of an incident on diagnosis, verification and communication. We wanted to see how
+            much of that loop an agent could take on without anyone giving up control of what ships.
           </p>
-          <p class="callout">
-            OpsRelay is a hackathon prototype. It monitors and repairs its own demo applications. It has no
-            connection to Microsoft&rsquo;s or any other production systems.
-          </p>
+          <p class="callout">OpsRelay is a hackathon prototype that monitors and repairs its own demo applications. It has no connection to Microsoft&rsquo;s or any other production systems.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cs-section rv">
+      <div class="cs-block rv">
         <h2>What we built</h2>
         <div class="prose">
           <p>Four parts that run on their own and work together:</p>
-          <ul class="checklist">
-            <li><strong>NovaMart</strong>, a shopping storefront
-              <span>Next.js storefront with a FastAPI back end. Pricing is calculated on the server, there&rsquo;s an inventory oversell guard, and a side-effect-free checkout probe runs the real checkout logic.</span></li>
-            <li><strong>NovaConnect</strong>, a real-time messenger
-              <span>Next.js client with a FastAPI and WebSocket API on SQLite. It has direct and group chats, idempotent sends, delivery and read receipts, and its own functional probe.</span></li>
-            <li><strong>Uptime monitor and status dashboard</strong>
-              <span>A Python worker probes each service for website, availability and core-workflow health, opens and resolves incidents, and writes an evidence hand-off for the agent. The dashboard is built with Next.js.</span></li>
-            <li><strong>Repair agents</strong>
-              <span>A Python orchestrator that picks up failed GitHub Actions runs and live incidents, diagnoses them, tests fixes, and opens draft pull requests. Its state and memory live in MongoDB Atlas.</span></li>
+          <ul class="points">
+            <li><b>NovaMart</b> is a storefront with a Next.js front end and a FastAPI back end. Pricing is calculated on the server, an inventory guard prevents overselling, and a side-effect-free probe runs the real checkout logic.</li>
+            <li><b>NovaConnect</b> is a real-time messenger: a Next.js client with a FastAPI and WebSocket API on SQLite. It has direct and group chats, idempotent sends, delivery and read receipts, and its own functional probe.</li>
+            <li><b>The uptime monitor and status dashboard</b> is a Python worker that checks each service&rsquo;s website, health and core workflow. It opens and resolves incidents and writes an evidence hand-off for the agent.</li>
+            <li><b>The repair agents</b> are a Python orchestrator that picks up failed GitHub Actions runs and live incidents, diagnoses them, tests fixes, and opens draft pull requests. Their state and memory live in MongoDB Atlas.</li>
           </ul>
-          <p style="margin-top:20px">
-            Both demo apps include controlled failure scenarios, such as a wrong discount calculation,
-            inverted duplicate-message protection, or a dependency that times out. That gives the system real,
-            reproducible bugs to find.
+          <p style="margin-top:18px">
+            Both demo apps include controlled failure scenarios, such as a wrong discount calculation, a broken
+            duplicate-message guard, or a dependency that times out. That gives the system real, reproducible
+            bugs to find.
           </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cs-section rv">
-        <h2>How an incident moves through it</h2>
-        <div>
-          <ol class="steps">
-            <li><h3>Detect what users would notice</h3>
-              <p>A homepage that returns 200 doesn&rsquo;t count as healthy. Each service has a functional probe, such as completing a checkout or sending a message. If it fails, the service is marked degraded even while the site still loads.</p></li>
-            <li><h3>Open an incident with evidence</h3>
-              <p>The monitor records the failure and writes a structured hand-off document for the agent: the failing probes, HTTP status, likely source files, timing, and whether the issue looks like service health or something to investigate.</p></li>
-            <li><h3>Reproduce before reasoning</h3>
-              <p>The agent reruns the failing tests at the failing commit, in a clean copy, before any model call. Flaky or unreproducible failures go to a person instead of a guess.</p></li>
-            <li><h3>Diagnose from quoted evidence</h3>
-              <p>The model gets logs, traceback frames, numbered source and the recent diff. Any evidence it cites has to match those inputs word for word, or the diagnosis is retried and then rejected.</p></li>
-            <li><h3>Prove the fix</h3>
-              <p>It asks for up to three minimal patches and tests each one in a fresh copy. A patch has to pass the failing tests and the full suite, and patches that touch tests, CI, dependencies or secrets are refused.</p></li>
-            <li><h3>Hand it to a person</h3>
-              <p>A passing patch becomes a draft pull request. The intent is saved in MongoDB first, so a crash can&rsquo;t open duplicates. A person reviews and merges it. The agent never merges.</p></li>
-          </ol>
-          <p class="callout">
-            When the evidence points at a dependency timeout and no recent commit touched that code, the
-            agent recommends an operational step and changes no code. A lot of real incidents look like that,
-            and a code change would be the wrong fix.
-          </p>
+      <div class="cs-block rv">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li><h3>Detect what users would notice</h3>
+            <p>A homepage that returns 200 doesn&rsquo;t count as healthy. Each service has a functional probe, such as completing a checkout or sending a message. If it fails, the service is marked degraded even while the site still loads.</p></li>
+          <li><h3>Open an incident with evidence</h3>
+            <p>The monitor writes a structured hand-off for the agent: the failing probes, the HTTP status, likely source files, timing, and whether the issue looks like service health or a code problem.</p></li>
+          <li><h3>Reproduce before reasoning</h3>
+            <p>The agent reruns the failing tests at the failing commit, in a clean copy, before any model call. Flaky or unreproducible failures go to a person instead of a guess.</p></li>
+          <li><h3>Diagnose from quoted evidence</h3>
+            <p>The model gets logs, traceback frames, numbered source and the recent diff. Any evidence it cites must match those inputs word for word, or the diagnosis is retried and then rejected.</p></li>
+          <li><h3>Prove the fix</h3>
+            <p>Up to three minimal patches are each tested in a fresh copy. A patch must pass the failing tests and the full suite, and patches that touch tests, CI, dependencies or secrets are refused.</p></li>
+          <li><h3>Hand it to a person</h3>
+            <p>A passing patch becomes a draft pull request. The intent is saved in MongoDB first, so a crash can&rsquo;t open duplicates. A person reviews and merges it; the agent never merges.</p></li>
+        </ol>
+        <p class="callout">When the evidence points to a dependency timeout and no recent commit touched that code, the agent recommends an operational step and changes no code. Many real incidents look like that, and a code change would be the wrong fix.</p>
+      </div>
+
+      <div class="cs-block rv">
+        <h2>Architecture decisions</h2>
+        <div class="pairs">
+          <div class="pair"><h3>Crash-safe orchestration</h3><p>A stage machine with leases stored in MongoDB Atlas. Each incident resumes from its last completed stage, so work isn&rsquo;t lost or repeated.</p></div>
+          <div class="pair"><h3>Repair memory</h3><p>Past incidents and fixes are stored with embeddings for Atlas Vector Search. A rejected pull request switches that memory off.</p></div>
+          <div class="pair"><h3>Idempotent checkouts</h3><p>A stable checkout ID follows the cart through confirmation, so recovery can resend a missing confirmation without creating a duplicate order.</p></div>
+          <div class="pair"><h3>Health separate from recovery</h3><p>A service can be working again while its incident stays open until interrupted checkouts are reconciled. The dashboard shows both.</p></div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cs-section rv">
-        <h2>Architecture highlights</h2>
-        <div class="grid g-2">
-          <div class="card feat">
-            <h3>Crash-safe orchestration</h3>
-            <p>A stage machine with leases stored in MongoDB Atlas. Each incident resumes from its last completed stage after a crash, so the work isn&rsquo;t lost or done twice.</p>
-          </div>
-          <div class="card feat">
-            <h3>Repair memory</h3>
-            <p>Past incidents and fixes are stored with embeddings for Atlas Vector Search, so the agent can look up similar failures. A rejected PR switches that memory off.</p>
-          </div>
-          <div class="card feat">
-            <h3>Idempotent by design</h3>
-            <p>Checkouts carry a stable ID from cart through confirmation, and replays return the stored record. Recovery can then resend just the missing confirmation without creating a duplicate order.</p>
-          </div>
-          <div class="card feat">
-            <h3>Separate health from recovery</h3>
-            <p>A service can be operational again while its incident stays open, because interrupted checkouts still need reconciling. The dashboard shows both states separately.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="cs-section rv">
+      <div class="cs-block rv">
         <h2>What I built</h2>
         <div class="prose">
-          <p>I wrote the first versions of three of the four components. Teammates then integrated and extended them.</p>
-          <ul class="checklist">
-            <li><strong>NovaMart</strong> (<a class="link-u" href="https://github.com/faizm10/opsrelay-agent/pull/2" target="_blank" rel="noopener">PR #2</a>)
-              <span>Storefront, product and cart pages, checkout, server-side pricing and promotions, an inventory guard, the checkout health probe, a pytest suite, and the CI workflow template.</span></li>
-            <li><strong>NovaConnect</strong> (<a class="link-u" href="https://github.com/faizm10/opsrelay-agent/pull/9" target="_blank" rel="noopener">PR #9</a>)
-              <span>Real-time messaging over WebSockets with delivery status, read receipts, typing indicators and reactions, a functional monitoring probe, and three controlled failure scenarios with tests.</span></li>
-            <li><strong>Uptime monitoring and status dashboard</strong> (<a class="link-u" href="https://github.com/faizm10/opsrelay-agent/pull/13" target="_blank" rel="noopener">PR #13</a>)
-              <span>The probe worker, the incident lifecycle, uptime calculation, SQLite and MongoDB storage back ends, the agent hand-off document, and the first Next.js dashboard.</span></li>
+          <p>I wrote the first versions of three of the four components. My teammates then integrated and extended them.</p>
+          <ul class="points">
+            <li><b>NovaMart</b> (<a class="link" href="https://github.com/faizm10/opsrelay-agent/pull/2" target="_blank" rel="noopener">PR #2</a>): the storefront, product and cart pages, checkout, server-side pricing and promotions, the inventory guard, the checkout health probe, a pytest suite, and the CI workflow template.</li>
+            <li><b>NovaConnect</b> (<a class="link" href="https://github.com/faizm10/opsrelay-agent/pull/9" target="_blank" rel="noopener">PR #9</a>): real-time messaging over WebSockets with delivery status, read receipts, typing indicators and reactions, a functional monitoring probe, and three controlled failure scenarios with tests.</li>
+            <li><b>Uptime monitoring and status dashboard</b> (<a class="link" href="https://github.com/faizm10/opsrelay-agent/pull/13" target="_blank" rel="noopener">PR #13</a>): the probe worker, incident lifecycle, uptime calculation, SQLite and MongoDB storage, the agent hand-off document, and the first Next.js dashboard.</li>
           </ul>
-          <p style="margin-top:20px">
-            The repair-agent pipeline and most of the later dashboard features were built by my teammates.
-            The linked pull requests show exactly what I wrote.
+          <p style="margin-top:18px">The repair-agent pipeline and most of the later dashboard features were built by my teammates.</p>
+        </div>
+      </div>
+
+      <div class="cs-block rv">
+        <h2>Where it stands</h2>
+        <div class="prose">
+          <p>
+            OpsRelay is a working prototype, not a production service. The repository includes a launcher
+            script that runs the whole system locally, and repair tests for both demo apps&rsquo; failure scenarios. A
+            hosted dashboard is deployed on Vercel.
+          </p>
+          <p>
+            What I&rsquo;d take into a real team: automated repair is only useful when it&rsquo;s narrow,
+            verifiable and easy to say no to. Reproduce first, demand evidence, test everything, and leave
+            the merge to a person.
           </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cs-section rv">
+      <div class="cs-block rv">
         <h2>Team</h2>
-        <div>
-          <div class="team">
-            <a href="https://github.com/faizm10" target="_blank" rel="noopener"><b>Faiz Mustansar</b><span>Repair agents, dashboard, deployment</span></a>
-            <a href="https://github.com/msalih04" target="_blank" rel="noopener"><b>Mohamed Salih</b><span>Repair agents</span></a>
-            <a href="https://github.com/hamza3454" target="_blank" rel="noopener"><b>Hamza Memon</b><span>Repair agents</span></a>
-            <a href="https://github.com/iamTMW" target="_blank" rel="noopener"><b>Taha Mohyuddin</b><span>Demo apps, uptime monitor</span></a>
-          </div>
-          <p class="prose small" style="margin-top:16px">Areas are based on each person&rsquo;s commits in the public repository.</p>
+        <div class="team">
+          <a href="https://github.com/faizm10" target="_blank" rel="noopener"><b>Faiz Mustansar</b><span>Repair agents, dashboard, deployment</span></a>
+          <a href="https://github.com/msalih04" target="_blank" rel="noopener"><b>Mohamed Salih</b><span>Repair agents</span></a>
+          <a href="https://github.com/hamza3454" target="_blank" rel="noopener"><b>Hamza Memon</b><span>Repair agents</span></a>
+          <a href="https://github.com/iamTMW" target="_blank" rel="noopener"><b>Taha Mohyuddin</b><span>Demo apps, uptime monitor</span></a>
         </div>
+        <p class="muted small" style="margin-top:12px">Areas are based on each person&rsquo;s commits in the public repository.</p>
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="cs-section rv">
-        <h2>Stack</h2>
-        <div>
-          <ul class="tags" style="margin-top:0">
-            <li>Next.js 15</li><li>TypeScript</li><li>Tailwind CSS</li><li>Python 3.12</li><li>FastAPI</li>
-            <li>WebSockets</li><li>SQLite</li><li>MongoDB Atlas</li><li>Atlas Vector Search</li>
-            <li>OpenAI API</li><li>GitHub API</li><li>GitHub Actions</li><li>pytest</li><li>Vercel</li>
-          </ul>
-          <p class="prose" style="margin-top:22px">
-            <strong>What I&rsquo;d take into a real team:</strong> automated repair is only useful when it&rsquo;s
-            narrow, verifiable and easy to say no to. Reproduce first, demand evidence, test everything, and
-            leave the merge to a person.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap">
-      <h2 class="rv">Next project</h2>
-      <p class="lede rv">Simply: a Flutter receipt manager I&rsquo;m building with a five-person team.</p>
+      <div>
+        <h2 class="rv">Next project</h2>
+        <p class="rv">Simply, a Flutter receipt manager I&rsquo;m building with a five-person team.</p>
+      </div>
       <div class="btn-row rv">
         <a class="btn btn-solid" href="/work#simply">See Simply</a>
-        <a class="btn btn-ghost" href="/work">All work</a>
+        <a class="btn btn-ghost" href="/work">All projects</a>
       </div>
     </div>
   </section>
